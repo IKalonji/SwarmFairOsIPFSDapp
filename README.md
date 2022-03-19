@@ -122,15 +122,13 @@ Please install the below required software in order to run the project.
 
 * Physical Android device (access to camera will be required)
 
-### Installation
-
-#### NOTE: Please request CLIENT ID and CLIENT SECRET in order to test with the Web3Auth (Default values provided in app.component.ts file).  
+### Installation 
 
 1. Clone the repo
    ```sh
    git clone https://github.com/IKalonji/SwarmFairOsIPFSDapp.git
    ```
-2. cd into the Ionic frontend install dependecies then paste your Tunnel URL as well as the Tatum API key in the environment.ts as well as the enviroment.prod.ts files, Example:
+2. cd into the Ionic frontend install dependecies then paste the necessary keys in the environment.ts as well as the enviroment.prod.ts files:
   ```sh
   cd SwarmFairOsIPFSDapp
   npm install
@@ -156,7 +154,6 @@ Please install the below required software in order to run the project.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-VIDEO DEMO COMING SOON
 [Video Demo](https://www.youtube.com/watch?v=i_sL1lnBuLk)
 
 
@@ -170,14 +167,9 @@ _Please refer to the [Documentation](https://github.com/IKalonji/SwarmFairOsIPFS
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add Card payments
-- [ ] Add Voucher provider
-- [ ] Add App security
-- [ ] Add backend hosting
-- [ ] Multi-language Support
-    - [ ] Swahili
-    - [ ] Zulu
-    - [ ] Lingala
+- [ ] Pods
+- [ ] Share files
+
 
 See the [open issues](https://github.com/IKalonji/SwarmFairOsIPFSDapp/issues) for a full list of proposed features (and known issues).
 
@@ -206,7 +198,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See https://opensource.org/licenses/MIT for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
