@@ -54,7 +54,7 @@ export class HomePage {
         duration: 4000
       }
     );
-    await this.actionsheet.dismiss()
+    // await this.actionsheet.dismiss()
     await showDownload.present();
 
     setTimeout(async ()=>{
