@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeConfig()">
+        <ion-icon color="primary" name="arrow-back" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Configuration</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card style="background-color: rgb(241, 135, 13); max-width: 90%; padding: 2px; border: blueviolet solid 1px;">
+    <ion-card-content style="color: black">
+      <p>By default Mobile DStorage makes use of Swarm Gateway endpoints and the base IPFS endpoint. You may configure the endpoints to some some other public gateway and pinning service</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Public endpoints</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let provider of providers">
+      <ion-avatar slot="start">
+        <img src="{{provider.logo}}"/>
+      </ion-avatar>
+      <ion-label position="stacked">{{provider.name}}</ion-label>
+      <ion-input type="text" placeholder="https://public.endpoint.example"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="saveConfig()" expand="full" fill="solid" color="primary" style="margin-top: 20px;">
+    <ion-label>Save Changes</ion-label>
+  </ion-button>
+</ion-content>

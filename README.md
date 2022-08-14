@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/IKalonji/SwarmFairOsIPFSDapp">
-    <img src="images/display.png" alt="Logo" width="80" height="80">
+    <img src="images/mobileDstorage.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Mobile Decentralized Storage</h3>
@@ -24,7 +24,7 @@
     <a href="https://github.com/IKalonji/SwarmFairOsIPFSDapp/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.youtube.com/watch?v=IItkbs6G270">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=qS4lHH8TzT8">View Demo</a>
     ·
     <a href="https://github.com/IKalonji/SwarmFairOsIPFSDapp/issues">Report Bug</a>
     ·
@@ -81,9 +81,8 @@ Here's why:
 
 ### Built With
 
-* [Kardiachain](https://docs.kardiachain.io/docs/)
-* [Swarm](https://docs.ethswarm.org/docs/)
-* [FairOS](https://docs.fairos.fairdatasociety.org/docs/fairOS-dfs/api-reference/)
+* [Swarm-JS](https://docs.ethswarm.org/docs/)
+* [FairOS-JS](https://docs.fairos.fairdatasociety.org/docs/fairOS-dfs/api-reference/)
 * [IPFS](https://ipfs.io/)
 * [Ionic](https://ionicframework.com/)
 * [Angular](https://angular.io/)
@@ -93,7 +92,7 @@ Here's why:
 ### Notice
 
 1. This project is not audited and should not be used in a production environment.
-2. The project was build on Windows and has not been tested on any Linux distro, but it should run since the tools used are cross platform. 
+2. The project was built on Windows and has not been tested on any Linux distro, but it should run since the tools used are cross platform. 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -126,7 +125,7 @@ Please install the below required software in order to run the project.
 const PRIVATE_KEY = "PRIVATE KEY HERE";  
 ```
 
-* Physical Android device (access to camera will be required)
+* Physical Android device
 
 ### Installation 
 
@@ -139,18 +138,14 @@ const PRIVATE_KEY = "PRIVATE KEY HERE";
   cd SwarmFairOsIPFSDapp
   npm install
   ```
-3. Deploy the smart contract to Kardiachain using Hardhat:
-  ```sh
-  npx hardhat run --networks kardiachain scripts/deploy.js
-  ```
-4. Now, we can build the frontend with Ionic and create an APK with Android Studio. In the terminal run:
+3. Now, we can build the frontend with Ionic and create an APK with Android Studio. In the terminal run:
   ```sh
   ionic capacitor build android
   ```
 
   Android Studio should open automatically once the build is complete. If not open the Ionic/Frontendandroid folder in Android Studio.
 
-5. Finally, use one of the two options to run the app:
+4. Finally, use one of the two options to run the app:
   * Option 1:
     In Android Studio, click on the build tab in the navigation bar and select 'Generate APK'. Complete the steps and navigate to the folder where the APK was generated. Send the APK to your Android device and install. 
   * Option 2:
@@ -163,10 +158,9 @@ const PRIVATE_KEY = "PRIVATE KEY HERE";
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-[Video Demo](https://www.youtube.com/watch?v=i_sL1lnBuLk)
+[Video Demo](https://www.youtube.com/watch?v=qS4lHH8TzT8)
 
-
-[![DEMO](https://img.youtube.com/vi/IItkbs6G270/0.jpg)](https://youtu.be/IItkbs6G270)
+[![DEMO](https://img.youtube.com/vi/qS4lHH8TzT8/0.jpg)](https://youtu.be/qS4lHH8TzT8)
 
 _Please refer to the [Documentation](https://github.com/IKalonji/SwarmFairOsIPFSDapp/blob/main/README.md)_
 
@@ -183,7 +177,6 @@ _Please refer to the [Documentation](https://github.com/IKalonji/SwarmFairOsIPFS
 See the [open issues](https://github.com/IKalonji/SwarmFairOsIPFSDapp/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -203,14 +196,12 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See https://opensource.org/licenses/MIT for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
@@ -227,7 +218,6 @@ Project Link: [https://github.com/IKalonji/SwarmFairOsIPFSDapp](https://github.c
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Kardiachain](https://docs.kardiachain.io/docs/)
 * [Swarm](https://docs.ethswarm.org/docs/)
 * [FairOS](https://docs.fairos.fairdatasociety.org/docs/fairOS-dfs/api-reference/)
 * [IPFS](https://ipfs.io/)
@@ -249,4 +239,4 @@ Project Link: [https://github.com/IKalonji/SwarmFairOsIPFSDapp](https://github.c
 [license-url]: https://github.com/IKalonji/SwarmFairOsIPFSDapp/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/issa-kalonji-b301851ba/
-[product-screenshot]: images/display.png
+[product-screenshot]: images/mobileImage.png

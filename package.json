@@ -9,7 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run start"
   },
   "private": true,
   "dependencies": {
@@ -19,11 +21,8 @@
     "@angular/platform-browser": "~13.2.2",
     "@angular/platform-browser-dynamic": "~13.2.2",
     "@angular/router": "~13.2.2",
-    "@capacitor/app": "1.1.1",
-    "@capacitor/core": "3.4.3",
-    "@capacitor/haptics": "1.1.4",
-    "@capacitor/keyboard": "1.2.2",
-    "@capacitor/status-bar": "1.0.8",
+    "@capacitor/android": "4.0.1",
+    "@capacitor/cli": "4.0.1",
     "@ionic/angular": "^6.0.0",
     "assert": "^2.0.0",
     "crypto-browserify": "^3.12.0",
@@ -48,7 +47,6 @@
     "@angular/compiler": "~13.2.2",
     "@angular/compiler-cli": "~13.2.2",
     "@angular/language-service": "~13.2.2",
-    "@capacitor/cli": "3.4.3",
     "@ionic/angular-toolkit": "^6.0.0",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
@@ -79,5 +77,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.4.4"
   },
-  "description": "An Ionic project"
+  "description": "Mobile DStorage"
 }
