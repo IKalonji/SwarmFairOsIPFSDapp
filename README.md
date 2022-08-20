@@ -86,6 +86,7 @@ Here's why:
 * [IPFS](https://ipfs.io/)
 * [Ionic](https://ionicframework.com/)
 * [Angular](https://angular.io/)
+* [Unstoppable-Domains](https://docs.unstoppabledomains.com/login-with-unstoppable/login-integration-guides/login-ui-configuration/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -158,9 +159,13 @@ const PRIVATE_KEY = "PRIVATE KEY HERE";
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+[Unstoppable Domains Integration](https://youtu.be/oi0qk-Uw0D0)
+
 [Video Demo](https://www.youtube.com/watch?v=qS4lHH8TzT8)
 
-[![DEMO](https://img.youtube.com/vi/qS4lHH8TzT8/0.jpg)](https://youtu.be/qS4lHH8TzT8)
+[![Unstoppable Domains Integration](https://img.youtube.com/vi/oi0qk-Uw0D0/0.jpg)](https://youtu.be/oi0qk-Uw0D0)
+
+[![DEMO Video](https://img.youtube.com/vi/qS4lHH8TzT8/0.jpg)](https://youtu.be/qS4lHH8TzT8)
 
 _Please refer to the [Documentation](https://github.com/IKalonji/SwarmFairOsIPFSDapp/blob/main/README.md)_
 
