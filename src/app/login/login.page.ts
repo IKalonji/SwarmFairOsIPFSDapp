@@ -6,7 +6,7 @@ import UAuth from '@uauth/js'
 
 const uauth = new UAuth({
   clientID: "a892174c-662d-46f2-9059-37e2a786da24",
-  redirectUri: "http://localhost:4200/login",
+  redirectUri: "https://mobile-dstorage.vercel.app/login",
 });
 
 @Component({
