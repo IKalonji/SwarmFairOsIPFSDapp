@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UseServiceService {
-
+  
   debugUsername:string = "debug_user";
   debugEmail:string = "debug@test.com";
   debugPassword:string = "debug_password";
@@ -19,5 +19,12 @@ export class UseServiceService {
     }
   }
 
+  getUsername(): string {
+    return this.debugUsername;
+  }
+
+  setUsername(username: string){
+    this.debugUsername = username;
+  }
 
 }

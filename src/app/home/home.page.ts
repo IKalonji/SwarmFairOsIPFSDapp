@@ -6,6 +6,7 @@ import { Slides } from 'src/models/slide.models';
 import { FairOS } from 'fairos-js';
 import { DrivePageComponent } from '../drive-page/drive-page.component';
 import { ConfigPageComponent } from '../config-page/config-page.component';
+import { UseServiceService } from '../services/use-service.service';
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
 const fairOS = new FairOS({
@@ -28,8 +29,13 @@ export class HomePage {
 
   currentProvider:string = "";
 
+  user:string = "";
+
   constructor(private modalController: ModalController,
-    private alertController: AlertController) {}
+    private alertController: AlertController,
+    private userService: UseServiceService) {
+      this.user = this.userService.getUsername();
+    }
 
   openDrive(drive:string){
     this.modalController.create({

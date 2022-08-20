@@ -90,12 +90,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPage": () => (/* binding */ LoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login.page.html?ngResource */ 41729);
 /* harmony import */ var _login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss?ngResource */ 87047);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 52816);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _services_use_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/use-service.service */ 97158);
+
 
 
 
@@ -103,12 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(router, loading) {
+    constructor(router, loading, userService, alertController) {
         this.router = router;
         this.loading = loading;
+        this.userService = userService;
+        this.alertController = alertController;
         this.userName = "";
         this.userEmail = "";
         this.userPassword = "";
+        this.user = {};
+        this.user = this.userService.getUser();
     }
     ngOnInit() {
     }
@@ -116,10 +122,17 @@ let LoginPage = class LoginPage {
         console.log("Login clicked");
         console.log(this.userName, this.userEmail, this.userPassword);
         this.loader("Logging in. Please wait.");
-        setTimeout(() => { this.router.navigate(["/home"]); }, 3000);
+        setTimeout(() => {
+            if (this.userName == this.user.username && this.userEmail == this.user.email && this.userPassword == this.user.password) {
+                this.router.navigate(["/home"]);
+            }
+            else {
+                this.invalidLogin();
+            }
+        }, 3000);
     }
     loader(message) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
             let load = yield this.loading.create({
                 message: message,
                 duration: 2500
@@ -127,18 +140,69 @@ let LoginPage = class LoginPage {
             yield load.present();
         });
     }
+    invalidLogin() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+            let alert = yield this.alertController.create({
+                header: "Invalid Login",
+                message: "Please check your username, email and password",
+                buttons: ["OK"]
+            });
+            yield alert.present();
+        });
+    }
 };
 LoginPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.LoadingController }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.LoadingController },
+    { type: _services_use_service_service__WEBPACK_IMPORTED_MODULE_2__.UseServiceService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.AlertController }
 ];
-LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-login',
         template: _login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], LoginPage);
+
+
+
+/***/ }),
+
+/***/ 97158:
+/*!*************************************************!*\
+  !*** ./src/app/services/use-service.service.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UseServiceService": () => (/* binding */ UseServiceService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
+
+
+let UseServiceService = class UseServiceService {
+    constructor() {
+        this.debugUsername = "debug_user";
+        this.debugEmail = "debug@test.com";
+        this.debugPassword = "debug_password";
+    }
+    getUser() {
+        return {
+            username: this.debugUsername,
+            email: this.debugEmail,
+            password: this.debugPassword
+        };
+    }
+};
+UseServiceService.ctorParameters = () => [];
+UseServiceService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+        providedIn: 'root'
+    })
+], UseServiceService);
 
 
 
@@ -160,7 +224,7 @@ module.exports = ".custom-font {\n  font-family: \"Josefin Sans\", sans-serif;\n
   \**************************************************/
 /***/ ((module) => {
 
-module.exports = "<link href=\"https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap\" rel=\"stylesheet\">\r\n\r\n<ion-header class=\"ion-no-border\">\r\n  <ion-toolbar>\r\n    <div class=\"back-circle\">\r\n    </div>\r\n    <ion-title class=\"ion-text-center custom-font\">Login/Signup</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <svg class=\"back-blob\" viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\">\r\n    <path fill=\"#A7F0BA\" d=\"M64.8,-36.9C78.7,-13.3,81.2,17.5,68.5,33.5C55.8,49.4,27.9,50.6,6.3,46.9C-15.2,43.3,-30.4,34.8,-41.5,19.7C-52.7,4.7,-59.8,-17,-52.2,-36.9C-44.6,-56.8,-22.3,-75.1,1.6,-76C25.4,-76.9,50.8,-60.5,64.8,-36.9Z\" transform=\"translate(100 100)\" />\r\n  </svg>\r\n\r\n  <div class=\"ion-padding\">\r\n    <form class=\"ion-padding\">\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"text\" name=\"user-name\" placeholder=\"User Name\" [(ngModel)]=\"userName\">\r\n      </div>\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"text\" name=\"user-email\" placeholder=\"Email\" [(ngModel)]=\"userEmail\">\r\n      </div>\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"password\" name=\"user-password\" placeholder=\"Password\" [(ngModel)]=\"userPassword\">\r\n      </div>\r\n\r\n      <div class=\"container-form-btn\">\r\n        <button class=\"form-btn custom-font\" (click)=\"login()\">\r\n          Submit\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ion-content>\r\n\r\n<ion-footer class=\"ion-no-border\">\r\n  <ion-toolbar>\r\n    <p class=\"ion-text-center custom-font\">Your Mobile Decentralized Storage</p>\r\n  </ion-toolbar>\r\n</ion-footer>\r\n\r\n<!--  -->\r\n";
+module.exports = "<link href=\"https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap\" rel=\"stylesheet\">\r\n\r\n<ion-header class=\"ion-no-border\">\r\n  <ion-toolbar>\r\n    <div class=\"back-circle\">\r\n    </div>\r\n    <ion-title class=\"ion-text-center custom-font\">Login/Signup</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <svg class=\"back-blob\" viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\">\r\n    <path fill=\"#FF9D5C\" d=\"M64.8,-36.9C78.7,-13.3,81.2,17.5,68.5,33.5C55.8,49.4,27.9,50.6,6.3,46.9C-15.2,43.3,-30.4,34.8,-41.5,19.7C-52.7,4.7,-59.8,-17,-52.2,-36.9C-44.6,-56.8,-22.3,-75.1,1.6,-76C25.4,-76.9,50.8,-60.5,64.8,-36.9Z\" transform=\"translate(100 100)\" />\r\n  </svg>\r\n\r\n  <div class=\"ion-padding\">\r\n    <form class=\"ion-padding\">\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"text\" name=\"user-name\" placeholder=\"User Name\" [(ngModel)]=\"userName\">\r\n      </div>\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"text\" name=\"user-email\" placeholder=\"Email\" [(ngModel)]=\"userEmail\">\r\n      </div>\r\n\r\n      <div class=\"wrap-input\">\r\n        <input class=\"input\" type=\"password\" name=\"user-password\" placeholder=\"Password\" [(ngModel)]=\"userPassword\">\r\n      </div>\r\n\r\n      <div class=\"container-form-btn\">\r\n        <button class=\"form-btn custom-font\" (click)=\"login()\">\r\n          Submit\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</ion-content>\r\n\r\n<ion-footer class=\"ion-no-border\">\r\n  <ion-toolbar>\r\n    <p class=\"ion-text-center custom-font\">Your Mobile Decentralized Storage</p>\r\n  </ion-toolbar>\r\n</ion-footer>\r\n\r\n<!--  -->\r\n";
 
 /***/ })
 

@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { UseServiceService } from '../services/use-service.service';
+import UAuth from '@uauth/js'
+
+const uauth = new UAuth({
+  clientID: "a892174c-662d-46f2-9059-37e2a786da24",
+  redirectUri: "http://localhost:4200/login",
+});
 
 @Component({
   selector: 'app-login',
@@ -61,5 +67,18 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async loginWithUnstoppable(){
+    try{
+      const authorization = await uauth.loginWithPopup()
+      console.log(authorization)
+      this.userService.setUsername(authorization.idToken.sub)
+      this.router.navigate(["/home"])
+    }catch(error){
+      console.log(error);
+      this.invalidLogin();
+    }
+    
   }
 }
