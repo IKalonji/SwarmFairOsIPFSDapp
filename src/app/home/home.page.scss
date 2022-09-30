@@ -1,9 +1,19 @@
 ion-header {
 
-  ion-toolbar, ion-item {
-    --background: #f1f5f8;
-    background: #f1f5f8;
+  ion-toolbar {
+    --background: white;
     padding: 0 10px;
+  }
+
+  ion-item{
+    --background: #323232;
+    
+  }
+
+  ion-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
   }
 
   ion-toolbar {
@@ -17,14 +27,17 @@ ion-header {
     h3 {
       font-weight: 700;
       font-size: 14px;
+      color:white;
     }
 
     p {
+      color: white;
       font-weight: 500;
       font-size: 14px;
     }
 
     ion-avatar {
+      background-color: white;
       --border-radius: 40%;
     }
   }
@@ -32,12 +45,21 @@ ion-header {
 }
 
 ion-content {
+  --background: linear-gradient(180deg, #323232 0%, #595959 100%);
+
   // --background: linear-gradient(90deg, rgb(91, 221, 58) 0%, rgb(29, 206, 97) 35%, rgb(45, 229, 116) 100%);
+  h5{
+    color:white;
+  }
+
+  h2{
+    color:white;
+  }
 
   .slides {
-    background: #f1f5f8fb;
+    // background: #323232;
     padding: 4px 10px 20px 10px;
-    border-radius: 0 0 28px 28px;
+    // border-radius: 0 0 28px 28px;
   }
 
   ion-card {
@@ -45,7 +67,7 @@ ion-content {
     box-shadow:rgb(29, 206, 97);
     border-radius: 14px;
     padding: 14px;
-    background: rgba(255,255,255,.8);
+    // background: rgba(255,255,255,.8);
     .main {
       width: 60px;
       height: 60px;
@@ -87,6 +109,7 @@ ion-content {
         padding: 6px 0;
 
         h4 {
+          color: white;
           font-weight: 600;
           font-size: 16px;
         }
@@ -98,6 +121,7 @@ ion-content {
     }
 
     h2 {
+      color: white;
       padding-bottom: 8px;
     }
 
