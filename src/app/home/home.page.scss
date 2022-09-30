@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/robtronika');
+
 ion-header {
 
   ion-toolbar {
@@ -6,9 +8,14 @@ ion-header {
   }
 
   ion-item{
-    --background: #323232;
-    
+    --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,179,0,1) 0%, rgba(255,117,0,1) 70%);
+
+    font-family: 'robtronika';
+    font-weight: normal;
+    color: black;
   }
+
+
 
   ion-title {
     color: #fff;
@@ -17,6 +24,7 @@ ion-header {
   }
 
   ion-toolbar {
+    
     .bordered {
       --border-radius: 10px;
       --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #FFFFFF;
@@ -24,50 +32,46 @@ ion-header {
   }
 
   ion-item {
-    h3 {
-      font-weight: 700;
-      font-size: 14px;
-      color:white;
-    }
 
-    p {
-      color: white;
-      font-weight: 500;
-      font-size: 14px;
+    h1, h2, h3, h4, h5, h6, p{
+      font-family: 'robtronika';
+      font-weight: normal;
+      color: black;
     }
 
     ion-avatar {
       background-color: white;
-      --border-radius: 40%;
+      --border-radius: 30%;
     }
   }
 
 }
 
+
 ion-content {
-  --background: linear-gradient(180deg, #323232 0%, #595959 100%);
-
-  // --background: linear-gradient(90deg, rgb(91, 221, 58) 0%, rgb(29, 206, 97) 35%, rgb(45, 229, 116) 100%);
-  h5{
-    color:white;
+  h1, h2, h3, h4, h5, h6, p{
+    font-family: 'robtronika';
+    font-weight: normal;
+    color: black;
   }
 
-  h2{
-    color:white;
-  }
+
+
+  background: rgb(2,0,36);
+  --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,179,0,1) 0%, rgba(255,117,0,1) 70%);
+
 
   .slides {
-    // background: #323232;
     padding: 4px 10px 20px 10px;
-    // border-radius: 0 0 28px 28px;
   }
 
   ion-card {
+
+    
     width: 100%;
     box-shadow:rgb(29, 206, 97);
     border-radius: 14px;
     padding: 14px;
-    // background: rgba(255,255,255,.8);
     .main {
       width: 60px;
       height: 60px;
@@ -82,20 +86,23 @@ ion-content {
       img {
         width: 100px;
       }
-
-      
-
     }
 
     .files {
         padding-top: 14px;
     }
 
+    ion-card-title{
+      font-family: 'robtronika';
+      font-weight: normal;
+      color: black;
+    }
+
   }
 
   .container {
     padding: 6px 20px;
-    color: #FFFFFF;
+    color: black;
 
     ion-item {
       --background: rgba(255,255,255,.1);
@@ -107,15 +114,9 @@ ion-content {
 
       ion-label {
         padding: 6px 0;
-
-        h4 {
-          color: white;
-          font-weight: 600;
-          font-size: 16px;
-        }
-        h6 {
-          color: rgba(255,255,255,.66);
-        }
+        font-family: 'robtronika';
+        font-weight: normal;
+        color: black;
       }
 
     }
@@ -126,5 +127,7 @@ ion-content {
     }
 
   }
+
+
 
 }
