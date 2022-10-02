@@ -7,8 +7,10 @@ ion-header {
     padding: 0 10px;
   }
 
-  ion-item{
-    --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,179,0,1) 0%, rgba(255,117,0,1) 70%);
+  ion-item {
+    // --background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 179, 0, 1) 0%, rgba(255, 117, 0, 1) 70%);
+    --background: linear-gradient( 90.5deg,  rgba(255,207,139,0.50) 1.1%, rgba(255,207,139,1) 81.3% );
+    // --background: white;
 
     font-family: 'robtronika';
     font-weight: normal;
@@ -24,7 +26,7 @@ ion-header {
   }
 
   ion-toolbar {
-    
+
     .bordered {
       --border-radius: 10px;
       --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #FFFFFF;
@@ -33,7 +35,13 @@ ion-header {
 
   ion-item {
 
-    h1, h2, h3, h4, h5, h6, p{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       font-family: 'robtronika';
       font-weight: normal;
       color: black;
@@ -49,85 +57,83 @@ ion-header {
 
 
 ion-content {
-  h1, h2, h3, h4, h5, h6, p{
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     font-family: 'robtronika';
     font-weight: normal;
     color: black;
   }
 
 
+  // background-image: 
+  --background: linear-gradient( 90.5deg,  rgba(255,207,139,0.50) 1.1%, rgba(255,207,139,1) 81.3% );
 
-  background: rgb(2,0,36);
-  --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,179,0,1) 0%, rgba(255,117,0,1) 70%);
 
 
   .slides {
     padding: 4px 10px 20px 10px;
-  }
-
-  ion-card {
-
-    
     width: 100%;
-    box-shadow:rgb(29, 206, 97);
-    border-radius: 14px;
-    padding: 14px;
-    .main {
-      width: 60px;
-      height: 60px;
-      border-radius: 50px;
-      background: #FFFFFF;
-      box-shadow:  7px 7px 20px #dbdfe2, 
-             -7px -7px 20px #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100px;
-      }
-    }
-
-    .files {
-        padding-top: 14px;
-    }
-
-    ion-card-title{
-      font-family: 'robtronika';
-      font-weight: normal;
-      color: black;
-    }
-
   }
 
-  .container {
-    padding: 6px 20px;
-    color: black;
 
-    ion-item {
-      --background: rgba(255,255,255,.1);
-      padding: 0;
-      margin: 14px 0;
-      --border-radius: 14px;
-      color: #FFFFFF;
-      font-weight: 600;
+  ion-slide {
+    max-width:500px;
+    max-height: 500px;
+    ion-card {
+      ion-card-header {
+        background-color: rgba(255, 254, 241, 0.2);
+      }
 
-      ion-label {
-        padding: 6px 0;
+
+      ion-card-title {
+        text-align: center;
         font-family: 'robtronika';
         font-weight: normal;
         color: black;
+        font-size: 15px;
+      }
+
+      width: 100%;
+
+
+      border-radius: 25px;
+      padding: 14px;
+    }
+
+    .container {
+      padding: 6px 20px;
+      color: black;
+
+      ion-item {
+        --background: rgba(255, 255, 255, .1);
+        padding: 0;
+        margin: 14px 0;
+        --border-radius: 14px;
+        color: #FFFFFF;
+        font-weight: 600;
+
+        ion-label {
+          padding: 6px 0;
+          font-family: 'robtronika';
+          font-weight: normal;
+          color: black;
+        }
+
+      }
+
+      h2 {
+        color: white;
+        padding-bottom: 8px;
       }
 
     }
-
-    h2 {
-      color: white;
-      padding-bottom: 8px;
-    }
-
   }
-
 
 
 }

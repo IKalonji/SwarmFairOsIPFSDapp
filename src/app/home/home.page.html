@@ -32,7 +32,7 @@
     </ion-card-content>
   </ion-card> -->
 
-  <div style="padding: 20px;">
+  <!-- <div style="padding: 20px;">
     <h5>Providers</h5>
     <span>
       <ion-chip style="background-color: #fff;">
@@ -54,7 +54,7 @@
         <ion-label>IPFS</ion-label>
       </ion-chip>
     </span>
-  </div>
+  </div> -->
   <div class="slides ion-margin-bottom">
     <h2 style="padding-left: 15px;">My Drives</h2>
     <ion-slides [options]="slidesOptions">
@@ -62,9 +62,9 @@
         <ion-card button (click)="openDrive(slide.name)">
           <ion-card-header>
             <div class="main">
-              <img src="{{slide.logo}}">
+              <img src="{{slide.logo}}" style="width: 200px; height: 200px;">
             </div>
-            <img class="files" src="https://i.ibb.co/jD8ypLq/files.jpg" alt="Files image">
+            <!-- <img class="files" src="https://i.ibb.co/jD8ypLq/files.jpg" alt="Files image"> -->
           </ion-card-header>
           <ion-card-content class="ion-text-left">
             <ion-card-title class="ion-margin-bottom">{{slide.name}}</ion-card-title>
