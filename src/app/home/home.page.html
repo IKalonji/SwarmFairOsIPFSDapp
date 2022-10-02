@@ -19,58 +19,26 @@
     </ion-avatar>
 			<ion-label>
 				<p>Hello,</p>
-				<h3>{{user}}</h3>
+				<h3>{{user.username}}</h3>
 			</ion-label>
 	  </ion-item>
 </ion-header>
 
 <ion-content>
-
-  <!-- <ion-card style="background-color: orange;">
-    <ion-card-content style="color: black">
-      <p>Please note Mobile DStorage is in beta release and as such you may encounter bugs. Please raise this with the developer for future improvements. We cannot guarantee persistence of files stored during this stage.</p>
-    </ion-card-content>
-  </ion-card> -->
-
-  <!-- <div style="padding: 20px;">
-    <h5>Providers</h5>
-    <span>
-      <ion-chip style="background-color: #fff;">
-        <ion-avatar>
-          <img src="../../assets/swarm.png" alt="Swarm" style="size: 30px; max-width: 30px;">
-        </ion-avatar>
-        <ion-label>Swarm</ion-label>
-      </ion-chip>
-      <ion-chip style="background-color: #fff;">
-        <ion-avatar>
-          <img src="../../assets/fairOS.svg" alt="FairOS" style="size: 30px; max-width: 30px;">
-        </ion-avatar>
-        <ion-label>FairOS</ion-label>
-      </ion-chip>
-      <ion-chip style="background-color: #fff;">
-        <ion-avatar>
-          <img src="../../assets/ipfsHex.png" alt="FairOS" style="size: 30px; max-width: 30px;">
-        </ion-avatar>
-        <ion-label>IPFS</ion-label>
-      </ion-chip>
-    </span>
-  </div> -->
-  <div class="slides ion-margin-bottom">
-    <h2 style="padding-left: 15px;">My Drives</h2>
+  <h2 style="padding-left: 15px; padding-top: 50px;">My Drives</h2>
+  <div>
     <ion-slides [options]="slidesOptions">
       <ion-slide *ngFor="let slide of slides">
         <ion-card button (click)="openDrive(slide.name)">
           <ion-card-header>
             <div class="main">
-              <img src="{{slide.logo}}" style="width: 200px; height: 200px;">
+              <img src="{{slide.logo}}" style="max-width: 100px; height: 120px;">
             </div>
-            <!-- <img class="files" src="https://i.ibb.co/jD8ypLq/files.jpg" alt="Files image"> -->
           </ion-card-header>
           <ion-card-content class="ion-text-left">
             <ion-card-title class="ion-margin-bottom">{{slide.name}}</ion-card-title>
             <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
           </ion-card-content>
-          <!-- <input type="file" id="fileupload" style="display:none" (change)="fileProvided($event)"> -->
         </ion-card>
       </ion-slide>
     </ion-slides>

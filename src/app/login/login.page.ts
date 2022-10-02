@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { UseServiceService } from '../services/use-service.service';
 import UAuth from '@uauth/js'
+import { InAppDataService } from '../services/in-app-data.service';
+import { User } from 'src/models/user.model';
 
 const uauth = new UAuth({
   clientID: "a892174c-662d-46f2-9059-37e2a786da24",
@@ -16,36 +17,51 @@ const uauth = new UAuth({
 })
 export class LoginPage implements OnInit {
 
-  userName:string = "";
-  userEmail:string = "";
-  userPassword:string = "";
+  username:string = "";
+  password:string= "";
+  confirmedPassword:string= "";
 
-  user:any = {};
+  user:User=null;
 
   constructor(private router: Router, 
     private loading: LoadingController, 
-    private userService: UseServiceService, 
-    private alertController: AlertController) { 
-
-    this.user = this.userService.getUser();
+    private alertController: AlertController,
+    private inAppStore: InAppDataService) { 
+      this.getUserIfValid();
    }
 
   ngOnInit() {
   }
 
+  async getUserIfValid(){
+    await this.inAppStore.getUser().then(value => {
+      console.log(value)
+      if(value != null){
+        let userDetails: any = value;
+        this.user = {username: userDetails.username, pass: userDetails.pass};
+      }
+    });
+  }
+
   login(){
-    console.log("Login clicked");
-    console.log(this.userName, this.userEmail, this.userPassword);
     this.loader("Logging in. Please wait.")
     setTimeout(() =>
       {
-        if(this.userName == this.user.username && this.userEmail == this.user.email && this.userPassword == this.user.password){
+        if(this.username == this.user.username && this.password == this.user.pass){
           this.router.navigate(["/home"])
         }else {
           this.invalidLogin();
         }
         
       },3000)
+  }
+
+  signUp(){
+    if(this.password == this.confirmedPassword){
+      this.inAppStore.setUser({username:this.username, pass: this.password})
+      this.router.navigate(["/home"])
+    }
+    
   }
 
   async loader(message: string){
@@ -69,16 +85,19 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  async loginWithUnstoppable(){
-    try{
-      const authorization = await uauth.loginWithPopup()
-      console.log(authorization)
-      this.userService.setUsername(authorization.idToken.sub)
-      this.router.navigate(["/home"])
-    }catch(error){
-      console.log(error);
-      this.invalidLogin();
-    }
+  // Not implemented for the beta version.
+
+  // async loginWithUnstoppable(){
+  //   try{
+  //     const authorization = await uauth.loginWithPopup()
+  //     console.log(authorization)
+  //     this.userService.setUsername(authorization.idToken.sub)
+  //     this.router.navigate(["/home"])
+  //   }catch(error){
+  //     console.log(error);
+  //     this.invalidLogin();
+  //   }
     
-  }
+  // }
+
 }

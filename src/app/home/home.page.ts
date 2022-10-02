@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { ActionSheetController, AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
-// import { create } from "ipfs-http-client"
-import { environment } from 'src/environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Slides } from 'src/models/slide.models';
-import { FairOS } from 'fairos-js';
+import { FairOS} from 'fairos-js';
 import { DrivePageComponent } from '../drive-page/drive-page.component';
 import { ConfigPageComponent } from '../config-page/config-page.component';
-import { UseServiceService } from '../services/use-service.service';
+import { InAppDataService } from '../services/in-app-data.service';
+import { User } from 'src/models/user.model';
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
 const fairOS = new FairOS({
@@ -19,7 +18,7 @@ const fairOS = new FairOS({
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   slidesOptions = {
     slidesPerView: 1.5
@@ -29,13 +28,25 @@ export class HomePage {
 
   currentProvider:string = "";
 
-  user:string = "";
+  user: User;
 
   constructor(private modalController: ModalController,
     private alertController: AlertController,
-    private userService: UseServiceService) {
-      this.user = this.userService.getUsername();
+    private inAppStore: InAppDataService) {
+      this.user = this.inAppStore.user;
     }
+
+  ngOnInit(): void {
+    this.showBetaMsg()
+  }
+
+  async showBetaMsg(){
+    let alertMessage = await this.alertController.create({
+      header: "Beta Notice",
+      message: "Please note that PocketDrive is in beta and as such persistence of documents stored cannot be guaranteed"
+    })
+    alertMessage.present()
+  }
 
   openDrive(drive:string){
     this.modalController.create({

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { FairOS } from 'fairos-js';
 import { environment } from 'src/environments/environment';
-import { FileServiceService } from '../services/file-service.service';
 
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
@@ -25,11 +24,10 @@ export class DrivePageComponent implements OnInit {
     private loading: LoadingController,
     private toast: ToastController,
     private actionsheet: ActionSheetController,
-    private fileService: FileServiceService,
     private alertController: AlertController) { }
 
   ngOnInit() {
-    this.files = this.fileService.getFiles();
+    
   }
 
   async closeDrive(){
@@ -45,7 +43,6 @@ export class DrivePageComponent implements OnInit {
     let newFile = file.target.files[0]
     console.log(file.target.files[0].name)
     this.showLoader('File uploading...', 'File successfully uploaded.')
-    this.fileService.addFile(file.target.files[0].name)
     this.uploadToProvider(newFile)
     console.log(this.files)
   }
@@ -169,7 +166,7 @@ export class DrivePageComponent implements OnInit {
 
 deleteFile(file:any){
   console.log("delete file " + file)
-  this.fileService.deleteFile(file)
+  //insert code to delete file from in app store
   this.alertController.create({
     header: "File deleted",
     message: "File successfully deleted",

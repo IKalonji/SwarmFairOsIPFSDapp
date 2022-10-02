@@ -1,44 +1,31 @@
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
-
-
-
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <!--  -->
-    <!-- <div class="back-circle"> -->
-    <!-- </div> -->
     <ion-title class="ion-text-center custom-font">Login/Signup</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <!-- <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> -->
-    <!-- <path fill="#FF9D5C" d="M64.8,-36.9C78.7,-13.3,81.2,17.5,68.5,33.5C55.8,49.4,27.9,50.6,6.3,46.9C-15.2,43.3,-30.4,34.8,-41.5,19.7C-52.7,4.7,-59.8,-17,-52.2,-36.9C-44.6,-56.8,-22.3,-75.1,1.6,-76C25.4,-76.9,50.8,-60.5,64.8,-36.9Z" transform="translate(100 100)" /> -->
-  <!-- </svg> -->
-
   <div class="ion-padding">
     <form class="ion-padding">
-
       <div class="wrap-input">
-        <input class="input" type="text" name="user-name" placeholder="User Name" [(ngModel)]="userName">
+        <input class="input" type="text" name="user-name" placeholder="Username" [(ngModel)]="username">
       </div>
-
       <div class="wrap-input">
-        <input class="input" type="text" name="user-email" placeholder="Email" [(ngModel)]="userEmail">
+        <input class="input" type="password" name="password" placeholder="Password" [(ngModel)]="password">
       </div>
-
-      <div class="wrap-input">
-        <input class="input" type="password" name="user-password" placeholder="Password" [(ngModel)]="userPassword">
+      <div class="wrap-input" *ngIf="user == null">
+        <input class="input" type="password" name="confirm password" placeholder="Confirm Password" [(ngModel)]="confirmedPassword">
       </div>
-
       <div class="container-form-btn">
-        <button class="form-btn custom-font" (click)="login()">
-          Submit
+        <button class="form-btn custom-font" (click)="login()" *ngIf="user != null">
+          Login
+        </button>
+        <button class="form-btn custom-font" (click)="signUp()" *ngIf="user == null">
+          Sign up
         </button>
       </div>
     </form>
   </div>
-  <div style="text-align: center; font-weight: 700;">
+  <!-- <div style="text-align: center; font-weight: 700;">
     <ion-label>OR</ion-label>
   </div>
   <br>
@@ -46,19 +33,10 @@
     <ion-button (click)="loginWithUnstoppable()"  fill="clear" shape="round">
       <img src="../../assets/ud-default-large.png" alt="Login with Unstoppable">
     </ion-button>
-  </div>
+  </div> -->
 </ion-content>
-
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <p class="ion-text-center custom-font">Your Mobile Decentralized Storage</p>
+    <p class="ion-text-center custom-font">Mobile Decentralized Storage</p>
   </ion-toolbar>
 </ion-footer>
-
-<!--  -->
-
-
-<style>
-
-
-</style>
