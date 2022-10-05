@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { FairOS } from 'fairos-js';
 import { environment } from 'src/environments/environment';
-
+import { InAppDataService } from '../services/in-app-data.service';
+import { IpfsService } from '../services/ipfs.service';
 
 const swarm = require("swarm-js").at("http://swarm-gateways.net");
 const fairOS = new FairOS({
@@ -24,10 +25,11 @@ export class DrivePageComponent implements OnInit {
     private loading: LoadingController,
     private toast: ToastController,
     private actionsheet: ActionSheetController,
+    // private fileService: FileServiceService,
     private alertController: AlertController) { }
 
   ngOnInit() {
-    
+    // this.files = this.fileService.getFiles();
   }
 
   async closeDrive(){
@@ -43,8 +45,11 @@ export class DrivePageComponent implements OnInit {
     let newFile = file.target.files[0]
     console.log(file.target.files[0].name)
     this.showLoader('File uploading...', 'File successfully uploaded.')
-    this.uploadToProvider(newFile)
+    // this.fileService.addFile(file.target.files[0].name)
+    let result = this.uploadToProvider(newFile)
+    alert(result)
     console.log(this.files)
+    
   }
 
   public async showLoader(loadingText: string, toastText: string){
@@ -76,7 +81,10 @@ export class DrivePageComponent implements OnInit {
   }
 
   public async uploadFileToIPFS(data: any): Promise<string> {
+    let ipfs = new IpfsService();
+    let resp = await ipfs.uploadFile(data);
     let url = ''
+
     const client = this.getClient()
 
     try {
@@ -157,6 +165,15 @@ export class DrivePageComponent implements OnInit {
   }
 
   downloadFile(file:any){
+    let ipServices = new IpfsService();
+    ipServices.downloadFile(file);
+
+    this.alertController.create({
+      header: 'Download',
+      message: 'File downloaded successfully',
+      buttons: ['OK']
+    }).then(alert => alert.present());
+
     console.log("download file " + file)
     this.alertController.create({
       header: "Download not allowed in debug mode",
@@ -166,7 +183,7 @@ export class DrivePageComponent implements OnInit {
 
 deleteFile(file:any){
   console.log("delete file " + file)
-  //insert code to delete file from in app store
+  // this.fileService.deleteFile(file)
   this.alertController.create({
     header: "File deleted",
     message: "File successfully deleted",
