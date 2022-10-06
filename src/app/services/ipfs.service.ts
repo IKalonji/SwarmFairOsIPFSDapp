@@ -29,7 +29,7 @@ export class IpfsService {
   async uploadFile(file: any) {
     //insert code to post file to IPFS tatum
     const id = file.name.split('.')[0];
-    return await fetch(
+    const res = await fetch(
       `https://api-eu1.tatum.io/v3/ipfs/${id}`,
       {
         method: 'GET',
@@ -38,5 +38,7 @@ export class IpfsService {
         }
       }
     );
+    alert(res.url)
+    return res;
   }
 }
