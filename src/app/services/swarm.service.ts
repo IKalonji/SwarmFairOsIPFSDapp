@@ -3,15 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class IpfsService {
+export class SwarmService {
 
   constructor() { }
-
-  async upload(file: any) {
-
-  }
-
-  async download(id: any) {
-    
-  }
 }

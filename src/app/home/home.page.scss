@@ -57,83 +57,39 @@ ion-header {
 
 
 ion-content {
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    font-family: 'robtronika';
-    font-weight: normal;
-    color: black;
-  }
-
-
   // background-image: 
-  --background: linear-gradient( 90.5deg,  rgba(255,207,139,0.50) 1.1%, rgba(255,207,139,1) 81.3% );
+  //--background: linear-gradient( 90.5deg,  rgba(255,207,139,0.50) 1.1%, rgba(255,207,139,1) 81.3% );
+  --background: rgba(255,207,139,0.50);
+  --display: flex;
+  --flex-direction: column;
+  --gap: 5rem;
+}
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px 0 black;
+}
 
+.card .icon {
+  background: rgba(255,207,139,1);
+  padding: 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
 
-  .slides {
-    padding: 4px 10px 20px 10px;
-    width: 100%;
-  }
+.card .icon img {
+  height: 100px;
+}
 
-
-  ion-slide {
-    width:300px;
-    height: fit-content;
-    ion-card {
-      ion-card-header {
-        background-color: rgba(255, 254, 241, 0.2);
-      }
-
-
-      ion-card-title {
-        text-align: center;
-        font-family: 'robtronika';
-        font-weight: normal;
-        color: black;
-        font-size: 14px;
-      }
-
-      width: 100%;
-      min-height: 130px;
-
-      border-radius: 25px;
-      padding: 14px;
-    }
-
-    .container {
-      padding: 6px 20px;
-      color: black;
-
-      ion-item {
-        --background: rgba(255, 255, 255, .1);
-        padding: 0;
-        margin: 14px 0;
-        --border-radius: 14px;
-        color: #FFFFFF;
-        font-weight: 600;
-
-        ion-label {
-          padding: 6px 0;
-          font-family: 'robtronika';
-          font-weight: normal;
-          color: black;
-        }
-
-      }
-
-      h2 {
-        color: white;
-        padding-bottom: 8px;
-      }
-
-    }
-  }
-
-
+.card .title {
+  background: black;
+  padding: 15px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-size: 1.2rem;
 }
