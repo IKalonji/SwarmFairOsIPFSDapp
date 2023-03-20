@@ -1,88 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
-import { Slides } from 'src/models/slide.models';
-import { FairOS} from 'fairos-js';
-import { DrivePageComponent } from '../drive-page/drive-page.component';
-import { ConfigPageComponent } from '../config-page/config-page.component';
-import { InAppDataService } from '../services/in-app-data.service';
-import { User } from 'src/models/user.model';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
-const swarm = require("swarm-js").at("http://swarm-gateways.net");
-const fairOS = new FairOS({
-  providerUrl: "https://fairos.fairdatasociety.org/v1",
-})
-
+import { DataService, Drive } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
+export class HomePage {
+  @ViewChild(IonModal) modal!: IonModal;
+  name!: string;
+  message!: string;
+  constructor(private data: DataService, private router: Router) { }
 
-  slidesOptions = {
-    slidesPerView: 1.5
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
   }
 
-  slides = Slides
+  confirm() {
+    this.modal.dismiss(this.name, 'confirm');
+  }
 
-  currentProvider:string = "";
-
-  user: User;
-
-  constructor(private modalController: ModalController,
-    private alertController: AlertController,
-    private inAppStore: InAppDataService) {
-      this.user = this.inAppStore.user;
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
     }
-
-  ngOnInit(): void {
-    this.showBetaMsg()
   }
 
-  async showBetaMsg(){
-    let alertMessage = await this.alertController.create({
-      header: "Beta Notice",
-      message: "Please note that PocketDrive is in beta and as such persistence of documents stored cannot be guaranteed"
-    })
-    alertMessage.present()
+  getDrives(): Drive[] {
+    return this.data.getDrives();
   }
 
-  openDrive(drive:string){
-    this.modalController.create({
-      component: DrivePageComponent,
-      componentProps: {
-        drive: drive
-      },
-    }).then(modal => {
-      modal.present();
-    }).catch(err => {
-      console.log(err)
-    }
-    );
-  }
-
-  openConfig(){
-    this.modalController.create({
-      component: ConfigPageComponent,
-    }).then(modal => {
-      modal.present();
-    }).catch(err => {
-      console.log(err)
-    }
-    );
-  }
-
-  openExploreApps(){
-    this.alertController.create({
-      header: "Explore dApps",
-      message: "Mirco dapps on Mobile DStorage are not yet available.",
-      buttons: ["OK"]
-  }).then(alertdisplay => {
-      alertdisplay.present();
-  }).catch(err => {
-      console.log(err)
-  })
+  openDrive(id: number) {
+    this.router.navigate(['home/drive', {id: id}]);
   }
 
 }
