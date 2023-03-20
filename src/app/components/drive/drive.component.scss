@@ -1,0 +1,16 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+}
+
+ion-card:active {
+    background-color: gray;
+    opacity: 0.5;
+}
