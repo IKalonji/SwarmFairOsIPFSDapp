@@ -16,6 +16,7 @@ export class DrivePage implements OnInit {
 
   id: any;
   drive: any;
+  files: File[] = []
 
   constructor(
     private route: ActivatedRoute, 
@@ -32,22 +33,24 @@ export class DrivePage implements OnInit {
       this.id = params['id'];
     });
     this.drive = this.data.getDriveById(this.id).name;
+    this.getFileList();
   }
 
-  refresh(ev: any) {
+  async refresh(ev: any) {
+    await this.getFileList();
     setTimeout(() => {
       (ev as RefresherCustomEvent).detail.complete();
     }, 3000);
   }
 
-  getFileList(): File[] {
-    let files: File[] = [];
-    this.storage.getFiles(this.id).then(data => files = data).catch(e => {});
-    return [];
+  async getFileList() {
+    await this.storage.getFiles(this.id).then(data => {
+      this.files = data;
+    }).catch(() => {});
   }
 
-  async upload() {
-    await this.storage.saveFile({ id: 'gfjhwf564ggg35g46', name: 'my picture'}, this.id);
+  async upload(e: any) {
+    await this.storage.saveFile({ id: 'gfjhwf564ggg35g46', name: 'my picture 1'}, this.id).then(() => {});
+    //await this.getFileList();
   }
-
 }

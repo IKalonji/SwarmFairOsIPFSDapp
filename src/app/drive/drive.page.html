@@ -2,7 +2,7 @@
   <ion-buttons slot="start">
     <ion-back-button default-href="home"></ion-back-button>
   </ion-buttons>
-  <ion-title style="text-align: center;">{{drive}} ({{getFileList().length}})</ion-title>
+  <ion-title style="text-align: center;">{{drive}} ({{files.length}})</ion-title>
   <ion-buttons slot="end">
     <ion-button>
       <ion-icon name="folder-open"></ion-icon>
@@ -12,12 +12,17 @@
 
 <ion-content class="content">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to reload"
+      refreshingSpinner="circles"
+      refreshingText="Loading...">
+    </ion-refresher-content>
   </ion-refresher>
 
-<app-file-item *ngFor="let item of getFileList()" [file]="item"></app-file-item>
+<app-file-item *ngFor="let item of files" [file]="item"></app-file-item>
   
-  <ion-card style="padding: 15px;" *ngIf="getFileList().length == 0">
+  <ion-card style="padding: 15px;" *ngIf="files.length == 0">
     <ion-title style="text-align: center;">No Files Availbable!</ion-title>
   </ion-card>
 </ion-content>
@@ -25,5 +30,6 @@
 <ion-fab slot="fixed" horizontal="end" vertical="bottom">
   <ion-fab-button>
     <ion-icon name="cloud-upload"></ion-icon>
+    <input type="file" (change)="upload($event)" id="file-input" accept="file">
   </ion-fab-button>
 </ion-fab>

@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
-/***/ 73696:
+/***/ 3696:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8937ead0.js ***!
   \*********************************************************************/
@@ -11,9 +11,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "c": () => (/* binding */ createButtonActiveGesture)
 /* harmony export */ });
-/* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-88bdeaae.js */ 39479);
-/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 70634);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
+/* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-88bdeaae.js */ 9479);
+/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 634);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -24,33 +24,42 @@ __webpack_require__.r(__webpack_exports__);
 const createButtonActiveGesture = (el, isButton) => {
   let currentTouchedButton;
   let initialTouchedButton;
+
   const activateButtonAtPoint = (x, y, hapticFeedbackFn) => {
     if (typeof document === 'undefined') {
       return;
     }
+
     const target = document.elementFromPoint(x, y);
+
     if (!target || !isButton(target)) {
       clearActiveButton();
       return;
     }
+
     if (target !== currentTouchedButton) {
       clearActiveButton();
       setActiveButton(target, hapticFeedbackFn);
     }
   };
+
   const setActiveButton = (button, hapticFeedbackFn) => {
     currentTouchedButton = button;
+
     if (!initialTouchedButton) {
       initialTouchedButton = currentTouchedButton;
     }
+
     const buttonToModify = currentTouchedButton;
     (0,_index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__.c)(() => buttonToModify.classList.add('ion-activated'));
     hapticFeedbackFn();
   };
+
   const clearActiveButton = (dispatchClick = false) => {
     if (!currentTouchedButton) {
       return;
     }
+
     const buttonToModify = currentTouchedButton;
     (0,_index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__.c)(() => buttonToModify.classList.remove('ion-activated'));
     /**
@@ -61,31 +70,33 @@ const createButtonActiveGesture = (el, isButton) => {
      * another button, and releasing on the original button. In that
      * case, we need to make sure we do not cause a double click there.
      */
+
     if (dispatchClick && initialTouchedButton !== currentTouchedButton) {
       currentTouchedButton.click();
     }
+
     currentTouchedButton = undefined;
   };
+
   return (0,_index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__.createGesture)({
     el,
     gestureName: 'buttonActiveDrag',
     threshold: 0,
-    onStart: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__.a),
-    onMove: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__.b),
+    onStart: ev => activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__.a),
+    onMove: ev => activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__.b),
     onEnd: () => {
       clearActiveButton(true);
       (0,_haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__.h)();
       initialTouchedButton = undefined;
-    },
+    }
   });
 };
 
 
 
-
 /***/ }),
 
-/***/ 17481:
+/***/ 7481:
 /*!***********************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/dir-e8b767a8.js ***!
   \***********************************************************/
@@ -98,26 +109,27 @@ __webpack_require__.r(__webpack_exports__);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+
 /**
  * Returns `true` if the document or host element
  * has a `dir` set to `rtl`. The host value will always
  * take priority over the root document value.
  */
-const isRTL = (hostEl) => {
+const isRTL = hostEl => {
   if (hostEl) {
     if (hostEl.dir !== '') {
       return hostEl.dir.toLowerCase() === 'rtl';
     }
   }
+
   return (document === null || document === void 0 ? void 0 : document.dir.toLowerCase()) === 'rtl';
 };
 
 
 
-
 /***/ }),
 
-/***/ 69013:
+/***/ 9013:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/focus-visible-5ad6825d.js ***!
   \*********************************************************************/
@@ -132,61 +144,58 @@ __webpack_require__.r(__webpack_exports__);
  */
 const ION_FOCUSED = 'ion-focused';
 const ION_FOCUSABLE = 'ion-focusable';
-const FOCUS_KEYS = [
-  'Tab',
-  'ArrowDown',
-  'Space',
-  'Escape',
-  ' ',
-  'Shift',
-  'Enter',
-  'ArrowLeft',
-  'ArrowRight',
-  'ArrowUp',
-  'Home',
-  'End',
-];
-const startFocusVisible = (rootEl) => {
+const FOCUS_KEYS = ['Tab', 'ArrowDown', 'Space', 'Escape', ' ', 'Shift', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'Home', 'End'];
+
+const startFocusVisible = rootEl => {
   let currentFocus = [];
   let keyboardMode = true;
   const ref = rootEl ? rootEl.shadowRoot : document;
   const root = rootEl ? rootEl : document.body;
-  const setFocus = (elements) => {
-    currentFocus.forEach((el) => el.classList.remove(ION_FOCUSED));
-    elements.forEach((el) => el.classList.add(ION_FOCUSED));
+
+  const setFocus = elements => {
+    currentFocus.forEach(el => el.classList.remove(ION_FOCUSED));
+    elements.forEach(el => el.classList.add(ION_FOCUSED));
     currentFocus = elements;
   };
+
   const pointerDown = () => {
     keyboardMode = false;
     setFocus([]);
   };
-  const onKeydown = (ev) => {
+
+  const onKeydown = ev => {
     keyboardMode = FOCUS_KEYS.includes(ev.key);
+
     if (!keyboardMode) {
       setFocus([]);
     }
   };
-  const onFocusin = (ev) => {
+
+  const onFocusin = ev => {
     if (keyboardMode && ev.composedPath) {
-      const toFocus = ev.composedPath().filter((el) => {
+      const toFocus = ev.composedPath().filter(el => {
         if (el.classList) {
           return el.classList.contains(ION_FOCUSABLE);
         }
+
         return false;
       });
       setFocus(toFocus);
     }
   };
+
   const onFocusout = () => {
     if (ref.activeElement === root) {
       setFocus([]);
     }
   };
+
   ref.addEventListener('keydown', onKeydown);
   ref.addEventListener('focusin', onFocusin);
   ref.addEventListener('focusout', onFocusout);
   ref.addEventListener('touchstart', pointerDown);
   ref.addEventListener('mousedown', pointerDown);
+
   const destroy = () => {
     ref.removeEventListener('keydown', onKeydown);
     ref.removeEventListener('focusin', onFocusin);
@@ -194,18 +203,18 @@ const startFocusVisible = (rootEl) => {
     ref.removeEventListener('touchstart', pointerDown);
     ref.removeEventListener('mousedown', pointerDown);
   };
+
   return {
     destroy,
-    setFocus,
+    setFocus
   };
 };
 
 
 
-
 /***/ }),
 
-/***/ 92668:
+/***/ 2668:
 /*!**************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-ce4f806c.js ***!
   \**************************************************************************/
@@ -217,8 +226,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
-/* harmony import */ var C_Users_bbdnet2583_Desktop_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
+/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
 
 
 /*!
@@ -227,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const attachComponent = /*#__PURE__*/function () {
-  var _ref = (0,C_Users_bbdnet2583_Desktop_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
+  var _ref = (0,C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
     var _a;
 
     if (delegate) {
@@ -276,7 +285,7 @@ const CoreDelegate = () => {
   let Reference;
 
   const attachViewToDom = /*#__PURE__*/function () {
-    var _ref2 = (0,C_Users_bbdnet2583_Desktop_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
+    var _ref2 = (0,C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
       var _a, _b;
 
       BaseComponent = parentElement;
@@ -367,7 +376,7 @@ const CoreDelegate = () => {
 
 /***/ }),
 
-/***/ 70634:
+/***/ 634:
 /*!**************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/haptic-683b3b3c.js ***!
   \**************************************************************/
@@ -387,91 +396,120 @@ __webpack_require__.r(__webpack_exports__);
 const HapticEngine = {
   getEngine() {
     var _a;
+
     const win = window;
-    return win.TapticEngine || (((_a = win.Capacitor) === null || _a === void 0 ? void 0 : _a.isPluginAvailable('Haptics')) && win.Capacitor.Plugins.Haptics);
+    return win.TapticEngine || ((_a = win.Capacitor) === null || _a === void 0 ? void 0 : _a.isPluginAvailable('Haptics')) && win.Capacitor.Plugins.Haptics;
   },
+
   available() {
     return !!this.getEngine();
   },
+
   isCordova() {
     return !!window.TapticEngine;
   },
+
   isCapacitor() {
     const win = window;
     return !!win.Capacitor;
   },
+
   impact(options) {
     const engine = this.getEngine();
+
     if (!engine) {
       return;
     }
+
     const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
-    engine.impact({ style });
+    engine.impact({
+      style
+    });
   },
+
   notification(options) {
     const engine = this.getEngine();
+
     if (!engine) {
       return;
     }
+
     const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
-    engine.notification({ style });
+    engine.notification({
+      style
+    });
   },
+
   selection() {
-    this.impact({ style: 'light' });
+    this.impact({
+      style: 'light'
+    });
   },
+
   selectionStart() {
     const engine = this.getEngine();
+
     if (!engine) {
       return;
     }
+
     if (this.isCapacitor()) {
       engine.selectionStart();
-    }
-    else {
+    } else {
       engine.gestureSelectionStart();
     }
   },
+
   selectionChanged() {
     const engine = this.getEngine();
+
     if (!engine) {
       return;
     }
+
     if (this.isCapacitor()) {
       engine.selectionChanged();
-    }
-    else {
+    } else {
       engine.gestureSelectionChanged();
     }
   },
+
   selectionEnd() {
     const engine = this.getEngine();
+
     if (!engine) {
       return;
     }
+
     if (this.isCapacitor()) {
       engine.selectionEnd();
-    }
-    else {
+    } else {
       engine.gestureSelectionEnd();
     }
-  },
+  }
+
 };
 /**
  * Trigger a selection changed haptic event. Good for one-time events
  * (not for gestures)
  */
+
 const hapticSelection = () => {
   HapticEngine.selection();
 };
 /**
  * Tell the haptic engine that a gesture for a selection change is starting.
  */
+
+
 const hapticSelectionStart = () => {
   HapticEngine.selectionStart();
 };
 /**
  * Tell the haptic engine that a selection changed during a gesture.
  */
+
+
 const hapticSelectionChanged = () => {
   HapticEngine.selectionChanged();
 };
@@ -479,6 +517,8 @@ const hapticSelectionChanged = () => {
  * Tell the haptic engine we are done with a gesture. This needs to be
  * called lest resources are not properly recycled.
  */
+
+
 const hapticSelectionEnd = () => {
   HapticEngine.selectionEnd();
 };
@@ -486,16 +526,17 @@ const hapticSelectionEnd = () => {
  * Use this to indicate success/failure/warning to the user.
  * options should be of the type `{ style: 'light' }` (or `medium`/`heavy`)
  */
-const hapticImpact = (options) => {
+
+
+const hapticImpact = options => {
   HapticEngine.impact(options);
 };
 
 
 
-
 /***/ }),
 
-/***/ 27288:
+/***/ 7288:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-3413f7be.js ***!
   \*************************************************************/
@@ -515,9 +556,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "r": () => (/* binding */ resetContentScrollY),
 /* harmony export */   "s": () => (/* binding */ scrollToTop)
 /* harmony export */ });
-/* harmony import */ var C_Users_bbdnet2583_Desktop_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
-/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 99273);
+/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
+/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 9273);
 
 
 /*!
@@ -552,7 +593,7 @@ const isIonContent = el => el && el.tagName === ION_CONTENT_TAG_NAME;
 
 
 const getScrollElement = /*#__PURE__*/function () {
-  var _ref = (0,C_Users_bbdnet2583_Desktop_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+  var _ref = (0,C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
     if (isIonContent(el)) {
       yield new Promise(resolve => (0,_helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__.c)(el, resolve));
       return el.getScrollElement();
@@ -677,7 +718,7 @@ const resetContentScrollY = (contentEl, initialScrollY) => {
 
 /***/ }),
 
-/***/ 72312:
+/***/ 2312:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-45ecc7ca.js ***!
   \*************************************************************/
@@ -711,6 +752,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+
 /* Ionicons v6.0.2, ES Modules */
 const arrowBackSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Arrow Back</title><path stroke-linecap='square' stroke-miterlimit='10' stroke-width='48' d='M244 400L100 256l144-144M120 256h292' class='ionicon-fill-none'/></svg>";
 const arrowDown = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Arrow Down</title><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 268l144 144 144-144M256 392V100' class='ionicon-fill-none'/></svg>";
@@ -736,11 +778,9 @@ const searchOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/200
 const searchSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Search</title><path d='M464 428L339.92 303.9a160.48 160.48 0 0030.72-94.58C370.64 120.37 298.27 48 209.32 48S48 120.37 48 209.32s72.37 161.32 161.32 161.32a160.48 160.48 0 0094.58-30.72L428 464zM209.32 319.69a110.38 110.38 0 11110.37-110.37 110.5 110.5 0 01-110.37 110.37z'/></svg>";
 
 
-
-
 /***/ }),
 
-/***/ 96524:
+/***/ 6524:
 /*!****************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/keyboard-4d5544a0.js ***!
   \****************************************************************/
@@ -772,23 +812,28 @@ let keyboardOpen = false;
 /**
  * This is only used for tests
  */
+
 const resetKeyboardAssist = () => {
   previousVisualViewport = {};
   currentVisualViewport = {};
   keyboardOpen = false;
 };
-const startKeyboardAssist = (win) => {
+
+const startKeyboardAssist = win => {
   startNativeListeners(win);
+
   if (!win.visualViewport) {
     return;
   }
+
   currentVisualViewport = copyVisualViewport(win.visualViewport);
+
   win.visualViewport.onresize = () => {
     trackViewportChanges(win);
+
     if (keyboardDidOpen() || keyboardDidResize(win)) {
       setKeyboardOpen(win);
-    }
-    else if (keyboardDidClose(win)) {
+    } else if (keyboardDidClose(win)) {
       setKeyboardClose(win);
     }
   };
@@ -798,15 +843,19 @@ const startKeyboardAssist = (win) => {
  * in Capacitor/Cordova so devs only need to listen
  * in one place.
  */
-const startNativeListeners = (win) => {
-  win.addEventListener('keyboardDidShow', (ev) => setKeyboardOpen(win, ev));
+
+
+const startNativeListeners = win => {
+  win.addEventListener('keyboardDidShow', ev => setKeyboardOpen(win, ev));
   win.addEventListener('keyboardDidHide', () => setKeyboardClose(win));
 };
+
 const setKeyboardOpen = (win, ev) => {
   fireKeyboardOpenEvent(win, ev);
   keyboardOpen = true;
 };
-const setKeyboardClose = (win) => {
+
+const setKeyboardClose = win => {
   fireKeyboardCloseEvent(win);
   keyboardOpen = false;
 };
@@ -822,17 +871,19 @@ const setKeyboardClose = (win) => {
  * is why we take into account the current visual viewport's
  * scale value.
  */
+
+
 const keyboardDidOpen = () => {
   const scaledHeightDifference = (previousVisualViewport.height - currentVisualViewport.height) * currentVisualViewport.scale;
-  return (!keyboardOpen &&
-    previousVisualViewport.width === currentVisualViewport.width &&
-    scaledHeightDifference > KEYBOARD_THRESHOLD);
+  return !keyboardOpen && previousVisualViewport.width === currentVisualViewport.width && scaledHeightDifference > KEYBOARD_THRESHOLD;
 };
 /**
  * Returns `true` if the keyboard is open,
  * but the keyboard did not close
  */
-const keyboardDidResize = (win) => {
+
+
+const keyboardDidResize = win => {
   return keyboardOpen && !keyboardDidClose(win);
 };
 /**
@@ -841,23 +892,31 @@ const keyboardDidResize = (win) => {
  * the current visual viewport height equals the
  * layout viewport height.
  */
-const keyboardDidClose = (win) => {
+
+
+const keyboardDidClose = win => {
   return keyboardOpen && currentVisualViewport.height === win.innerHeight;
 };
 /**
  * Dispatch a keyboard open event
  */
+
+
 const fireKeyboardOpenEvent = (win, nativeEv) => {
   const keyboardHeight = nativeEv ? nativeEv.keyboardHeight : win.innerHeight - currentVisualViewport.height;
   const ev = new CustomEvent(KEYBOARD_DID_OPEN, {
-    detail: { keyboardHeight },
+    detail: {
+      keyboardHeight
+    }
   });
   win.dispatchEvent(ev);
 };
 /**
  * Dispatch a keyboard close event
  */
-const fireKeyboardCloseEvent = (win) => {
+
+
+const fireKeyboardCloseEvent = win => {
   const ev = new CustomEvent(KEYBOARD_DID_CLOSE);
   win.dispatchEvent(ev);
 };
@@ -867,7 +926,9 @@ const fireKeyboardCloseEvent = (win) => {
  * while also preserving the previous visual and
  * layout viewport states
  */
-const trackViewportChanges = (win) => {
+
+
+const trackViewportChanges = win => {
   previousVisualViewport = Object.assign({}, currentVisualViewport);
   currentVisualViewport = copyVisualViewport(win.visualViewport);
 };
@@ -875,7 +936,9 @@ const trackViewportChanges = (win) => {
  * Creates a deep copy of the visual viewport
  * at a given state
  */
-const copyVisualViewport = (visualViewport) => {
+
+
+const copyVisualViewport = visualViewport => {
   return {
     width: Math.round(visualViewport.width),
     height: Math.round(visualViewport.height),
@@ -883,16 +946,15 @@ const copyVisualViewport = (visualViewport) => {
     offsetLeft: visualViewport.offsetLeft,
     pageTop: visualViewport.pageTop,
     pageLeft: visualViewport.pageLeft,
-    scale: visualViewport.scale,
+    scale: visualViewport.scale
   };
 };
 
 
 
-
 /***/ }),
 
-/***/ 43844:
+/***/ 3844:
 /*!***********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-5d6b6fe7.js ***!
   \***********************************************************************/
@@ -910,17 +972,17 @@ const spinners = {
     dur: 1000,
     circles: 9,
     fn: (dur, index, total) => {
-      const animationDelay = `${(dur * index) / total - dur}ms`;
-      const angle = (2 * Math.PI * index) / total;
+      const animationDelay = `${dur * index / total - dur}ms`;
+      const angle = 2 * Math.PI * index / total;
       return {
         r: 5,
         style: {
           top: `${9 * Math.sin(angle)}px`,
           left: `${9 * Math.cos(angle)}px`,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   circles: {
     dur: 1000,
@@ -934,10 +996,10 @@ const spinners = {
         style: {
           top: `${9 * Math.sin(angle)}px`,
           left: `${9 * Math.cos(angle)}px`,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   circular: {
     dur: 1400,
@@ -951,9 +1013,9 @@ const spinners = {
         fill: 'none',
         viewBox: '24 24 48 48',
         transform: 'translate(0,0)',
-        style: {},
+        style: {}
       };
-    },
+    }
   },
   crescent: {
     dur: 750,
@@ -961,9 +1023,9 @@ const spinners = {
     fn: () => {
       return {
         r: 26,
-        style: {},
+        style: {}
       };
-    },
+    }
   },
   dots: {
     dur: 750,
@@ -974,84 +1036,82 @@ const spinners = {
         r: 6,
         style: {
           left: `${9 - 9 * index}px`,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   lines: {
     dur: 1000,
     lines: 8,
     fn: (dur, index, total) => {
-      const transform = `rotate(${(360 / total) * index + (index < total / 2 ? 180 : -180)}deg)`;
-      const animationDelay = `${(dur * index) / total - dur}ms`;
+      const transform = `rotate(${360 / total * index + (index < total / 2 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
       return {
         y1: 14,
         y2: 26,
         style: {
           transform: transform,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   'lines-small': {
     dur: 1000,
     lines: 8,
     fn: (dur, index, total) => {
-      const transform = `rotate(${(360 / total) * index + (index < total / 2 ? 180 : -180)}deg)`;
-      const animationDelay = `${(dur * index) / total - dur}ms`;
+      const transform = `rotate(${360 / total * index + (index < total / 2 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
       return {
         y1: 12,
         y2: 20,
         style: {
           transform: transform,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   'lines-sharp': {
     dur: 1000,
     lines: 12,
     fn: (dur, index, total) => {
       const transform = `rotate(${30 * index + (index < 6 ? 180 : -180)}deg)`;
-      const animationDelay = `${(dur * index) / total - dur}ms`;
+      const animationDelay = `${dur * index / total - dur}ms`;
       return {
         y1: 17,
         y2: 29,
         style: {
           transform: transform,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
+    }
   },
   'lines-sharp-small': {
     dur: 1000,
     lines: 12,
     fn: (dur, index, total) => {
       const transform = `rotate(${30 * index + (index < 6 ? 180 : -180)}deg)`;
-      const animationDelay = `${(dur * index) / total - dur}ms`;
+      const animationDelay = `${dur * index / total - dur}ms`;
       return {
         y1: 12,
         y2: 20,
         style: {
           transform: transform,
-          'animation-delay': animationDelay,
-        },
+          'animation-delay': animationDelay
+        }
       };
-    },
-  },
+    }
+  }
 };
 const SPINNERS = spinners;
 
 
-
-
 /***/ }),
 
-/***/ 21812:
+/***/ 1812:
 /*!******************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/swipe-back-fa30a130.js ***!
   \******************************************************************/
@@ -1061,10 +1121,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createSwipeBackGesture": () => (/* binding */ createSwipeBackGesture)
 /* harmony export */ });
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
-/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 17481);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
-/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 70607);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
+/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 7481);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
+/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 607);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -1081,30 +1141,40 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
    * of the screen. If true, then the swipe
    * to go back gesture should proceed.
    */
-  const isAtEdge = (detail) => {
+
+  const isAtEdge = detail => {
     const threshold = 50;
-    const { startX } = detail;
+    const {
+      startX
+    } = detail;
+
     if (rtl) {
       return startX >= win.innerWidth - threshold;
     }
+
     return startX <= threshold;
   };
-  const getDeltaX = (detail) => {
+
+  const getDeltaX = detail => {
     return rtl ? -detail.deltaX : detail.deltaX;
   };
-  const getVelocityX = (detail) => {
+
+  const getVelocityX = detail => {
     return rtl ? -detail.velocityX : detail.velocityX;
   };
-  const canStart = (detail) => {
+
+  const canStart = detail => {
     return isAtEdge(detail) && canStartHandler();
   };
-  const onMove = (detail) => {
+
+  const onMove = detail => {
     // set the transition animation's progress
     const delta = getDeltaX(detail);
     const stepValue = delta / win.innerWidth;
     onMoveHandler(stepValue);
   };
-  const onEnd = (detail) => {
+
+  const onEnd = detail => {
     // the swipe back gesture has ended
     const delta = getDeltaX(detail);
     const width = win.innerWidth;
@@ -1115,6 +1185,7 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
     const missing = shouldComplete ? 1 - stepValue : stepValue;
     const missingDistance = missing * width;
     let realDur = 0;
+
     if (missingDistance > 5) {
       const dur = missingDistance / Math.abs(velocity);
       realDur = Math.min(dur, 540);
@@ -1124,8 +1195,11 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
      * or values greater than 1 which should not be possible.
      * Need to investigate more to find where the issue is.
      */
+
+
     onEndHandler(shouldComplete, stepValue <= 0 ? 0.01 : (0,_helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__.l)(0, stepValue, 0.9999), realDur);
   };
+
   return (0,_index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__.createGesture)({
     el,
     gestureName: 'goback-swipe',
@@ -1134,10 +1208,9 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
     canStart,
     onStart: onStartHandler,
     onMove,
-    onEnd,
+    onEnd
   });
 };
-
 
 
 
