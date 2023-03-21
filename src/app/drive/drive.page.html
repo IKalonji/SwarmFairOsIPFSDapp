@@ -15,7 +15,7 @@
     <ion-refresher-content
       pullingIcon="chevron-down-circle-outline"
       pullingText="Pull to reload"
-      refreshingSpinner="circles"
+      refreshingSpinner="circular"
       refreshingText="Loading...">
     </ion-refresher-content>
   </ion-refresher>
@@ -26,6 +26,9 @@
     <ion-title style="text-align: center;">No Files Availbable!</ion-title>
   </ion-card>
 </ion-content>
+<div class="spinner" id="spinner">
+  <ion-spinner name="circular"></ion-spinner>
+</div>
 
 <ion-fab slot="fixed" horizontal="end" vertical="bottom">
   <ion-fab-button (click)="upload()">

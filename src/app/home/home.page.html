@@ -39,18 +39,7 @@
     </ion-header>
 
     <ion-content class="ion-padding">
-      <ion-item>
-        <ion-label position="stacked">Enter your name</ion-label>
-        <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-      </ion-item>
+      <app-settings></app-settings>
     </ion-content>
-
-    <ion-footer>
-      <ion-toolbar>
-        <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-footer>
   </ng-template>
 </ion-modal>

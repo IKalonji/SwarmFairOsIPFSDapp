@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RefresherCustomEvent } from '@ionic/angular';
+import { AlertController, RefresherCustomEvent } from '@ionic/angular';
 import { DataService, File } from '../services/data.service';
 import { FairService } from '../services/fair.service';
 import { IpfsService } from '../services/ipfs.service';
@@ -25,7 +25,8 @@ export class DrivePage implements OnInit {
     private storage: StorageService,
     private swarm: SwarmService,
     private ipfs: IpfsService,
-    private fair: FairService) { 
+    private fair: FairService,
+    private alertController: AlertController) { 
     
   }
 
@@ -39,27 +40,48 @@ export class DrivePage implements OnInit {
 
   async refresh(ev: any) {
     await this.getFileList();
-    setTimeout(() => {
-      (ev as RefresherCustomEvent).detail.complete();
-    }, 3000);
   }
 
   async getFileList() {
+    this.data.showSpinner();
     await this.storage.getFiles(this.id).then(data => {
       this.files = data;
-    }).catch(() => {});
+    }).catch((e) => {
+      this.showAlert("Load Files", e);
+    });
+    this.data.hideSpinner();
   }
 
   async upload() {
     const result = await FilePicker.pickFiles();
     const file = result.files[0];
+    let message = 'File uploaded successfully...';
+    let header = 'File Upload';
     if(file.blob) {
-      await this.ipfs.upload(file).then(async data => {
-        await this.storage.saveFile({ id: data, name: file.name}, this.id).then(() => {}).catch(e => {
+      this.data.showSpinner();
+      if(this.id == 0) {
+
+      } else if(this.id == 1) {
+        await this.ipfs.upload(file).then(async data => {
+          await this.storage.saveFile({ id: data, name: file.name}, this.id).then(() => {}).catch(e => {});
+        }).catch(e => {
+          message = e;
         });
-      }).catch(e => {
-      });
+      } else if(this.id == 2) {
+
+      }
+      this.data.hideSpinner();
+      this.showAlert(header, message);
     }
     await this.getFileList();
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['Ok']
+    });
+    await alert.present();
   }
 }

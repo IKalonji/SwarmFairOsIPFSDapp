@@ -42,4 +42,12 @@ export class DataService {
   public getDriveById(id: number): Drive {
     return this.drives[id];
   }
+
+  public showSpinner() {
+    document.getElementById("spinner").style.display = "block";
+  }
+
+  public hideSpinner() {
+    document.getElementById("spinner").style.display = "none";
+  }
 }

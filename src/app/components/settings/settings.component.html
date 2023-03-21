@@ -1,0 +1,13 @@
+<ion-item style="border-radius: 4px;">
+  <ion-label position="stacked">Web3 Storage Token</ion-label>
+  <ion-input type="text" placeholder="Your name" [(ngModel)]="ipfs"></ion-input>
+</ion-item>
+
+<ion-buttons slot="end" style="margin-top: 10px; display: flex; justify-content: end;">
+  <ion-button (click)="removeIPFSToken()" color="danger" style="box-shadow: 1px 1px 2px 1px blue; border-radius: 4px;">
+    <ion-label>Remove </ion-label>
+  </ion-button>
+  <ion-button (click)="updateIPFSToken()" color="success" style="box-shadow: 1px 1px 2px 1px blue; border-radius: 4px; margin-left: 10px;">
+    <ion-label>Update </ion-label>
+  </ion-button>
+</ion-buttons>

@@ -11,6 +11,8 @@ export class StorageService {
   private IPFSStore = "ipfs";
   private FairStore = "fair";
 
+  private IPFSToken = "IPFSToken";
+
   constructor(private storage: Storage) { 
     storage.ready();
   }
@@ -80,5 +82,17 @@ export class StorageService {
 
   private async getFair(): Promise<File[]> {
     return [];
+  }
+
+  async setIPFSToken(token: string) {
+    await this.storage.set(this.IPFSToken, token);
+  }
+
+  async getIPFSToken(): Promise<string> {
+    return await this.storage.get(this.IPFSToken);
+  }
+
+  async removeIPFSToken() {
+    await this.storage.remove(this.IPFSToken)
   }
 }

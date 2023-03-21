@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { environment } from 'src/environments/environment';
 import { Web3Storage } from 'web3.storage';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IpfsService {
 
-  client = new Web3Storage({ token: environment.Web3StorageToken});
+  client: any;
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: StorageService) { 
+    
+  }
 
   async upload(file: any) {
+    let token = "";
+    await this.storage.getIPFSToken().then(data => token = data);
+    this.client = new Web3Storage({ token: token});
+
     return await this.client.put([file.blob], {
       name: file.name,
       maxRetries: 3,
@@ -20,6 +25,10 @@ export class IpfsService {
   }
 
   async download(cid: any) {
+    let token = "";
+    await this.storage.getIPFSToken().then(data => token = data);
+    this.client = new Web3Storage({ token: token});
+    
     const response = await this.client.get(cid);
     const files = await response?.files();
 
