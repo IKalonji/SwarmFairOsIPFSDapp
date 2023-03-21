@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { DriveComponent } from '../components/drive/drive.component';
-import { AccountComponent } from '../components/account/account.component';
 import { SettingsComponent } from '../components/settings/settings.component';
 
 @NgModule({
@@ -16,6 +15,6 @@ import { SettingsComponent } from '../components/settings/settings.component';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, DriveComponent, AccountComponent, SettingsComponent]
+  declarations: [HomePage, DriveComponent, SettingsComponent]
 })
 export class HomePageModule {}

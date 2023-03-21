@@ -1,4 +1,4 @@
-<div class="content">
+<!--<div class="content">
 
   <div class="item">
     
@@ -40,6 +40,10 @@
     </ion-item>
 
     <ion-item>
+      <ion-input type="text" placeholder="URL..."></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-input type="text" placeholder="Wallet Username..."></ion-input>
     </ion-item>
 
@@ -54,4 +58,85 @@
       </ion-buttons>
     </ion-toolbar>
   </div>
+</div>-->
+
+<ion-tab-bar slot="top">
+  <ion-tab-button (click)="changeTab('swarm')">
+    <ion-img src="../../../assets/swarm.png"></ion-img>
+    <ion-label id="swarm" style="font-size: small; font-weight: 700; width: 100%;">Swarm</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="changeTab('ipfs')">
+    <ion-img src="../../../assets/ipfs.png"></ion-img>
+    <ion-label id="ipfs" style="font-size: small; font-weight: 700; width: 100%;">IPFS</ion-label>
+  </ion-tab-button>
+  <ion-tab-button (click)="changeTab('fair')">
+    <ion-img src="../../../assets/fair.svg"></ion-img>
+    <ion-label id="fair" style="font-size: small; font-weight: 700; width: 100%;">Fair</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+
+
+
+<div class="content"  *ngIf="tab == 'swarm'">
+
+  <ion-item>
+    <ion-input type="text" placeholder="Batch Id..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" placeholder="URL..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" placeholder="Wallet Username..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" placeholder="Wallet Password..."></ion-input>
+  </ion-item>
+
+  <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
+    <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+    <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+  </ion-buttons>
+</div>
+
+
+
+
+<div class="content" *ngIf="tab == 'ipfs'">
+  <ion-item>
+    <ion-input type="text" placeholder="Web3 Storage Token (IPFS)..." [(ngModel)]="ipfs"></ion-input>
+  </ion-item>
+  
+  <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
+    <ion-button (click)="removeIPFSToken()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+    <ion-button (click)="updateIPFSToken()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+  </ion-buttons>
+</div>
+
+
+
+
+<div class="content"  *ngIf="tab == 'fair'">
+  <ion-item>
+    <ion-input type="text" placeholder="Batch Id..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" placeholder="URL..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" placeholder="Wallet Username..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" placeholder="Wallet Password..."></ion-input>
+  </ion-item>
+
+  <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
+    <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+    <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+  </ion-buttons>
 </div>

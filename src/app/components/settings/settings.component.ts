@@ -9,11 +9,15 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class SettingsComponent implements OnInit {
 
+  tab = "ipfs";
+
   ipfs = "";
 
   constructor(private storage: StorageService, private alertController: AlertController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.changeTab(this.tab);
+  }
 
   async updateIPFSToken() {
     await this.storage.setIPFSToken(this.ipfs).then(async () => {
@@ -40,6 +44,14 @@ export class SettingsComponent implements OnInit {
       buttons: ['Ok']
     });
     await alert.present();
+  }
+
+  changeTab(tab: string) {
+    document.getElementById('swarm').style.borderBottom = 'none';
+    document.getElementById('ipfs').style.borderBottom = 'none';
+    document.getElementById('fair').style.borderBottom = 'none';
+    document.getElementById(tab).style.borderBottom = '2px solid var(--ion-color-tertiary)';
+    this.tab = tab;
   }
 
 }
