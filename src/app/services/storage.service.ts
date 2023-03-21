@@ -13,7 +13,6 @@ export class StorageService {
 
   constructor(private storage: Storage) { 
     storage.ready();
-    storage.clear()
   }
 
   async saveFile(file: File, store: number) {
@@ -32,19 +31,16 @@ export class StorageService {
       await this.getSwarm().then(data => {
         files = data
       }).catch(e => {
-        console.log(e);
       });
     } else if(store == 1) {
       await this.getIPFS().then(data => {
         files = data
       }).catch(e => {
-        console.log(e);
       });
     } else if(store == 2) {
       await this.getFair().then(data => {
         files = data
       }).catch(e => {
-        console.log(e);
       });
     }
     return files;
@@ -60,11 +56,9 @@ export class StorageService {
 
   async saveIPFS(file: File) {
     await this.storage.get(this.IPFSStore).then(data => {
-      alert(data.length);
       let files: File[] = data;
       files.push(file);
       this.storage.set(this.IPFSStore, files);
-      alert(data[1])
     }).catch(e => {
       this.storage.set(this.IPFSStore, [file]);
     })

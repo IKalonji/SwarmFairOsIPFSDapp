@@ -1,8 +1,26 @@
 .row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 15px;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 1px 1px 2px 0 gray;
+    gap: 10px;
+}
+
+.end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.download {
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px 1px blue;
+    width: fit-content;
+    text-align: center;
+}
+
+.download:active {
+    box-shadow: 1px 1px 2px 0 blue;
 }

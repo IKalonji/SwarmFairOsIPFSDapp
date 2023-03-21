@@ -6,6 +6,7 @@ import { FairService } from '../services/fair.service';
 import { IpfsService } from '../services/ipfs.service';
 import { StorageService } from '../services/storage.service';
 import { SwarmService } from '../services/swarm.service';
+import { FilePicker } from '@capawesome/capacitor-file-picker';
 
 @Component({
   selector: 'app-drive',
@@ -49,8 +50,16 @@ export class DrivePage implements OnInit {
     }).catch(() => {});
   }
 
-  async upload(e: any) {
-    await this.storage.saveFile({ id: 'gfjhwf564ggg35g46', name: 'my picture 1'}, this.id).then(() => {});
-    //await this.getFileList();
+  async upload() {
+    const result = await FilePicker.pickFiles();
+    const file = result.files[0];
+    if(file.blob) {
+      await this.ipfs.upload(file).then(async data => {
+        await this.storage.saveFile({ id: data, name: file.name}, this.id).then(() => {}).catch(e => {
+        });
+      }).catch(e => {
+      });
+    }
+    await this.getFileList();
   }
 }

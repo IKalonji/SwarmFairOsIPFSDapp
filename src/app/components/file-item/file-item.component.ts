@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { File } from 'src/app/services/data.service';
+import { IpfsService } from 'src/app/services/ipfs.service';
 
 @Component({
   selector: 'app-file-item',
@@ -10,8 +11,12 @@ export class FileItemComponent  implements OnInit {
 
   @Input() file?: File
 
-  constructor() { }
+  constructor(private ipfs: IpfsService) { }
 
   ngOnInit() {}
+
+  async download(id) {
+    await this.ipfs.download(id);
+  }
 
 }

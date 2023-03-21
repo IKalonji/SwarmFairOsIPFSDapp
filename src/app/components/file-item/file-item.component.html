@@ -1,4 +1,6 @@
 <div class="row">
   <ion-label>{{file ? file.name : "File"}}</ion-label>
-  <div class="download">Download</div>
+  <div class="end">
+    <div class="download" (click)="download(file ? file.id : '')">Download</div>
+  </div>
 </div>

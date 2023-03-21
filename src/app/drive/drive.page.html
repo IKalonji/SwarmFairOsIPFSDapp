@@ -28,8 +28,7 @@
 </ion-content>
 
 <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-  <ion-fab-button>
+  <ion-fab-button (click)="upload()">
     <ion-icon name="cloud-upload"></ion-icon>
-    <input type="file" (change)="upload($event)" id="file-input" accept="file">
   </ion-fab-button>
 </ion-fab>
