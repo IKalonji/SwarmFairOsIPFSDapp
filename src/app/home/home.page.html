@@ -1,6 +1,6 @@
 <ion-toolbar style="border-bottom: 1px solid gray;">
   <ion-buttons slot="start">
-    <ion-button>
+    <ion-button id="account" (click)="openLogin()">
       <ion-icon slot="icon-only" name="person-circle"></ion-icon>
     </ion-button>
   </ion-buttons>
@@ -40,6 +40,71 @@
 
     <ion-content class="ion-padding">
       <app-settings></app-settings>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal trigger="account" [isOpen]="isLoginOpen" (willDismiss)="onWillDismiss($event)" [initialBreakpoint]="0.4" [canDismiss]="true">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-icon></ion-icon>
+        </ion-buttons>
+        <ion-title>Sign In</ion-title>
+        <ion-buttons slot="end">
+          <ion-icon></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding ">
+      <ion-item>
+        <ion-input placeholder="Username..."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password..."></ion-input>
+      </ion-item>
+      <ion-toolbar style="border-radius: 5px;">
+        <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
+          <ion-button (click)="openRegister()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Sign Up</ion-button>
+          <ion-button (click)="login()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Sign In</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal [isOpen]="isRegisterOpen" (willDismiss)="onWillDismiss($event)" [initialBreakpoint]="0.5" [canDismiss]="true">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-icon></ion-icon>
+        </ion-buttons>
+        <ion-title>Create Account</ion-title>
+        <ion-buttons slot="end">
+          <ion-icon></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding ">
+      <ion-item>
+        <ion-input placeholder="Username..."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password..."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Confirm Password..."></ion-input>
+      </ion-item>
+      <ion-toolbar style="border-radius: 5px;">
+        <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
+          <ion-button (click)="openLogin()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Sign In</ion-button>
+          <ion-button (click)="register()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Sign Up</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
     </ion-content>
   </ng-template>
 </ion-modal>

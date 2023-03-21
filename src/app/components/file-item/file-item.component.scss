@@ -16,11 +16,11 @@
 .download {
     padding: 5px;
     border-radius: 4px;
-    box-shadow: 1px 1px 2px 1px blue;
+    box-shadow: 1px 1px 2px 1px var(--ion-color-tertiary);
     width: fit-content;
     text-align: center;
 }
 
 .download:active {
-    box-shadow: 1px 1px 2px 0 blue;
+    box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary);
 }

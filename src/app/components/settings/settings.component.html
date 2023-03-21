@@ -1,13 +1,57 @@
-<ion-item style="border-radius: 4px;">
-  <ion-label position="stacked">Web3 Storage Token</ion-label>
-  <ion-input type="text" placeholder="Your name" [(ngModel)]="ipfs"></ion-input>
-</ion-item>
+<div class="content">
 
-<ion-buttons slot="end" style="margin-top: 10px; display: flex; justify-content: end;">
-  <ion-button (click)="removeIPFSToken()" color="danger" style="box-shadow: 1px 1px 2px 1px blue; border-radius: 4px;">
-    <ion-label>Remove </ion-label>
-  </ion-button>
-  <ion-button (click)="updateIPFSToken()" color="success" style="box-shadow: 1px 1px 2px 1px blue; border-radius: 4px; margin-left: 10px;">
-    <ion-label>Update </ion-label>
-  </ion-button>
-</ion-buttons>
+  <div class="item">
+    
+    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
+      <ion-buttons slot="start">
+        <ion-icon></ion-icon>
+      </ion-buttons>
+      <ion-title>IPFS</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Web3 Storage Token (IPFS)..." [(ngModel)]="ipfs"></ion-input>
+    </ion-item>
+    
+    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
+      <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
+        <ion-button (click)="removeIPFSToken()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+        <ion-button (click)="updateIPFSToken()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <div class="item">
+    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
+      <ion-buttons slot="start">
+        <ion-icon></ion-icon>
+      </ion-buttons>
+      <ion-title>Swarm / Fair</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Batch Id..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Wallet Username..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Wallet Password..."></ion-input>
+    </ion-item>
+    
+    <ion-toolbar style="border-radius: 5px;">
+      <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
+        <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+        <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</div>

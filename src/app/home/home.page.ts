@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonModal } from '@ionic/angular';
+import { AlertController, IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
 import { DataService, Drive } from '../services/data.service';
@@ -12,12 +12,21 @@ import { DataService, Drive } from '../services/data.service';
 })
 export class HomePage {
   @ViewChild(IonModal) modal!: IonModal;
+  @ViewChild(IonModal) account!: IonModal;
   name!: string;
   message!: string;
-  constructor(private data: DataService, private router: Router) { }
+
+  isLoginOpen = true;
+  isRegisterOpen = false;
+
+  constructor(private data: DataService, private router: Router, private alertController: AlertController) { }
+
+  ngOnInit() {
+  }
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
+    this.account.dismiss(null, 'cancel');
   }
 
   confirm() {
@@ -37,6 +46,24 @@ export class HomePage {
 
   openDrive(id: number) {
     this.router.navigate(['home/drive', {id: id}]);
+  }
+
+  login() {
+    this.isLoginOpen = false;
+  }
+
+  register() {
+    this.isRegisterOpen = false;
+  }
+
+  openLogin() {
+    this.isRegisterOpen = false;
+    this.isLoginOpen = true;
+  }
+
+  openRegister() {
+    this.isLoginOpen = false;
+    this.isRegisterOpen = true;
   }
 
 }

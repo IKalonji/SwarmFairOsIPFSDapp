@@ -5,3 +5,16 @@
 ion-title {
   text-align: center;
 }
+
+ion-item {
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px 0 black;
+  background-color: transparent;
+  margin-bottom: 15px;
+}
+
+.btn-account ion-button {
+  box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary);
+  border-radius: 4px;
+  width: 45vw;
+}

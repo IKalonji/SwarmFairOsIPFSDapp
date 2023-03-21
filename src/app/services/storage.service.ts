@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { File } from './data.service';
+import { File, User } from './data.service';
 import { Storage } from '@ionic/storage';
 
 @Injectable({
@@ -94,5 +94,44 @@ export class StorageService {
 
   async removeIPFSToken() {
     await this.storage.remove(this.IPFSToken)
+  }
+
+  async setUser(user: User) {
+    await this.storage.set('User', user);
+  }
+
+  async isAuto(): Promise<boolean> {
+    let result = false;
+    await this.storage.get('user').then(user => {
+      result = user.auto;
+    });
+    return result;
+  }
+
+  async isUser(): Promise<boolean> {
+    let result = false;
+    await this.storage.get('user').then(user => {
+      if(user) {
+        result = true;
+      }
+    });
+    return result;
+  }
+
+  async signIn(username: string, password: string, auto: boolean): Promise<boolean> {
+    let result = false;
+    let user = await this.storage.get('user').then(async user => {
+      if((user.username == username) && (user.upassword == password)) {
+        result = true;
+        if(auto) {
+          let usr = user;
+          usr.auto = auto;
+          await this.storage.set('user', usr);
+        }
+      }
+    }).catch(e => {
+      throw Error("Invalid Username or Password");
+    })
+    return result;
   }
 }

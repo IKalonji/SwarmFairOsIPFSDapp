@@ -11,6 +11,12 @@ export interface File {
   name: string;
 }
 
+export interface User {
+  username: string;
+  password: string;
+  auto: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
