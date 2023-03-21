@@ -48,11 +48,11 @@ export class HomePage {
     this.router.navigate(['home/drive', {id: id}]);
   }
 
-  login() {
+  async login() {
     this.isLoginOpen = false;
   }
 
-  register() {
+  async register() {
     this.isRegisterOpen = false;
   }
 
@@ -64,6 +64,15 @@ export class HomePage {
   openRegister() {
     this.isLoginOpen = false;
     this.isRegisterOpen = true;
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['Ok']
+    });
+    await alert.present();
   }
 
 }
