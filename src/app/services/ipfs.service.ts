@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Web3Storage } from 'web3.storage';
 import { StorageService } from './storage.service';
+import { FileDownload } from 'capacitor-plugin-filedownload';
 
 @Injectable({
   providedIn: 'root'
