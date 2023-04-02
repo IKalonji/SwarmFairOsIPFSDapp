@@ -4,7 +4,7 @@
   </ion-buttons>
   <ion-title style="text-align: center;">{{drive}} ({{files.length}})</ion-title>
   <ion-buttons slot="end">
-    <ion-button>
+    <ion-button (click)="upload()">
       <ion-icon name="folder-open"></ion-icon>
     </ion-button>
   </ion-buttons>
@@ -26,6 +26,7 @@
     <ion-title style="text-align: center;">No Files Availbable!</ion-title>
   </ion-card>
 </ion-content>
+
 <div class="spinner" id="spinner">
   <ion-spinner name="circular"></ion-spinner>
 </div>

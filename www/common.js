@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
-/***/ 3696:
+/***/ 73696:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8937ead0.js ***!
   \*********************************************************************/
@@ -11,9 +11,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "c": () => (/* binding */ createButtonActiveGesture)
 /* harmony export */ });
-/* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-88bdeaae.js */ 9479);
-/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 634);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
+/* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-88bdeaae.js */ 39479);
+/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 70634);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -96,7 +96,7 @@ const createButtonActiveGesture = (el, isButton) => {
 
 /***/ }),
 
-/***/ 7481:
+/***/ 17481:
 /*!***********************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/dir-e8b767a8.js ***!
   \***********************************************************/
@@ -129,7 +129,7 @@ const isRTL = hostEl => {
 
 /***/ }),
 
-/***/ 9013:
+/***/ 69013:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/focus-visible-5ad6825d.js ***!
   \*********************************************************************/
@@ -214,7 +214,7 @@ const startFocusVisible = rootEl => {
 
 /***/ }),
 
-/***/ 2668:
+/***/ 92668:
 /*!**************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-ce4f806c.js ***!
   \**************************************************************************/
@@ -226,8 +226,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
-/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
+/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 
 
 /*!
@@ -376,7 +376,7 @@ const CoreDelegate = () => {
 
 /***/ }),
 
-/***/ 634:
+/***/ 70634:
 /*!**************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/haptic-683b3b3c.js ***!
   \**************************************************************/
@@ -536,7 +536,7 @@ const hapticImpact = options => {
 
 /***/ }),
 
-/***/ 7288:
+/***/ 27288:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-3413f7be.js ***!
   \*************************************************************/
@@ -556,9 +556,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "r": () => (/* binding */ resetContentScrollY),
 /* harmony export */   "s": () => (/* binding */ scrollToTop)
 /* harmony export */ });
-/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
-/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 9273);
+/* harmony import */ var C_Users_bbdnet2576_Desktop_Projects_Nice_Projects_SwarmFairOsIPFSDapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
+/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 99273);
 
 
 /*!
@@ -718,7 +718,7 @@ const resetContentScrollY = (contentEl, initialScrollY) => {
 
 /***/ }),
 
-/***/ 2312:
+/***/ 72312:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-45ecc7ca.js ***!
   \*************************************************************/
@@ -780,7 +780,7 @@ const searchSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/
 
 /***/ }),
 
-/***/ 6524:
+/***/ 96524:
 /*!****************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/keyboard-4d5544a0.js ***!
   \****************************************************************/
@@ -954,7 +954,7 @@ const copyVisualViewport = visualViewport => {
 
 /***/ }),
 
-/***/ 3844:
+/***/ 43844:
 /*!***********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-5d6b6fe7.js ***!
   \***********************************************************************/
@@ -1111,7 +1111,7 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ 1812:
+/***/ 21812:
 /*!******************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/swipe-back-fa30a130.js ***!
   \******************************************************************/
@@ -1121,10 +1121,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createSwipeBackGesture": () => (/* binding */ createSwipeBackGesture)
 /* harmony export */ });
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
-/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 7481);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
-/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 607);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
+/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 17481);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
+/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 70607);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */

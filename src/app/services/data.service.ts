@@ -31,12 +31,12 @@ export class DataService {
       name: 'IPFS',
       icon: '../assets/ipfs.png',
       id: 1
-    },
+    }/*,
     {
       name: 'Fair',
       icon: '../assets/fair.svg',
       id: 2
-    },
+    },*/
   ];
 
   constructor() { }

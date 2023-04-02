@@ -1,78 +1,20 @@
-<!--<div class="content">
-
-  <div class="item">
-    
-    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
-      <ion-buttons slot="start">
-        <ion-icon></ion-icon>
-      </ion-buttons>
-      <ion-title>IPFS</ion-title>
-      <ion-buttons slot="end">
-        <ion-icon></ion-icon>
-      </ion-buttons>
-    </ion-toolbar>
-
-    <ion-item>
-      <ion-input type="text" placeholder="Web3 Storage Token (IPFS)..." [(ngModel)]="ipfs"></ion-input>
-    </ion-item>
-    
-    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
-      <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
-        <ion-button (click)="removeIPFSToken()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
-        <ion-button (click)="updateIPFSToken()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </div>
-
-  <div class="item">
-    <ion-toolbar style="border-radius: 5px; margin-bottom: 15px;">
-      <ion-buttons slot="start">
-        <ion-icon></ion-icon>
-      </ion-buttons>
-      <ion-title>Swarm / Fair</ion-title>
-      <ion-buttons slot="end">
-        <ion-icon></ion-icon>
-      </ion-buttons>
-    </ion-toolbar>
-
-    <ion-item>
-      <ion-input type="text" placeholder="Batch Id..."></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="text" placeholder="URL..."></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="text" placeholder="Wallet Username..."></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="password" placeholder="Wallet Password..."></ion-input>
-    </ion-item>
-    
-    <ion-toolbar style="border-radius: 5px;">
-      <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px; padding-right: 5px;">
-        <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
-        <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </div>
-</div>-->
-
 <ion-tab-bar slot="top">
-  <ion-tab-button (click)="changeTab('swarm')">
-    <ion-img src="../../../assets/swarm.png"></ion-img>
-    <ion-label id="swarm" style="font-size: small; font-weight: 700; width: 100%;">Swarm</ion-label>
+  <ion-tab-button (click)="changeTab('swarm')" style="padding: 0; margin: 0;">
+    <div id="swarm" style="width: 100%; height: 100%;">
+      <ion-img src="../../../assets/swarm.png"></ion-img>
+      <ion-label style="font-size: small; font-weight: 700; width: 100%;">Swarm</ion-label>
+    </div>
   </ion-tab-button>
   <ion-tab-button (click)="changeTab('ipfs')">
-    <ion-img src="../../../assets/ipfs.png"></ion-img>
-    <ion-label id="ipfs" style="font-size: small; font-weight: 700; width: 100%;">IPFS</ion-label>
+    <div id="ipfs" style="width: 100%; height: 100%;">
+      <ion-img src="../../../assets/ipfs.png"></ion-img>
+      <ion-label style="font-size: small; font-weight: 700; width: 100%;">IPFS</ion-label>
+    </div>
   </ion-tab-button>
-  <ion-tab-button (click)="changeTab('fair')">
+  <!--<ion-tab-button (click)="changeTab('fair')">
     <ion-img src="../../../assets/fair.svg"></ion-img>
     <ion-label id="fair" style="font-size: small; font-weight: 700; width: 100%;">Fair</ion-label>
-  </ion-tab-button>
+  </ion-tab-button>-->
 </ion-tab-bar>
 
 
@@ -80,24 +22,23 @@
 <div class="content"  *ngIf="tab == 'swarm'">
 
   <ion-item>
-    <ion-input type="text" placeholder="Batch Id..."></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input type="text" placeholder="URL..."></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input type="text" placeholder="Wallet Username..."></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input type="password" placeholder="Wallet Password..."></ion-input>
+    <ion-input [(ngModel)]="batchId" type="text" placeholder="Postage Batch Id..."></ion-input>
   </ion-item>
 
   <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
-    <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
-    <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+    <ion-button (click)="removeSwarmBatchId()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+    <ion-button (click)="updateSwarmBatchId()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
+  </ion-buttons>
+
+  <div style="border-bottom: 2px solid var(--ion-color-tertiary); margin: 20px 0;"></div>
+
+  <ion-item>
+    <ion-input [(ngModel)]="url" type="text" placeholder="URL..."></ion-input>
+  </ion-item>
+
+  <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
+    <ion-button (click)="removeSwarmUrl()" color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
+    <ion-button (click)="updateSwarmUrl()" color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
   </ion-buttons>
 </div>
 
@@ -106,7 +47,7 @@
 
 <div class="content" *ngIf="tab == 'ipfs'">
   <ion-item>
-    <ion-input type="text" placeholder="Web3 Storage Token (IPFS)..." [(ngModel)]="ipfs"></ion-input>
+    <ion-input type="text" placeholder="Web3Storage Token (IPFS)..." [(ngModel)]="ipfs"></ion-input>
   </ion-item>
   
   <ion-buttons slot="start" style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
@@ -118,7 +59,8 @@
 
 
 
-<div class="content"  *ngIf="tab == 'fair'">
+
+<!--<div class="content"  *ngIf="tab == 'fair'">
   <ion-item>
     <ion-input type="text" placeholder="Batch Id..."></ion-input>
   </ion-item>
@@ -139,4 +81,4 @@
     <ion-button color="warning" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Remove</ion-button>
     <ion-button color="success" style="width: 100%; box-shadow: 1px 1px 2px 0 var(--ion-color-tertiary)">Update</ion-button>
   </ion-buttons>
-</div>
+</div>-->

@@ -17,7 +17,7 @@ export class DrivePage implements OnInit {
 
   id: any;
   drive: any;
-  files: File[] = []
+  files: File[] = [];
 
   constructor(
     private route: ActivatedRoute, 
@@ -26,20 +26,20 @@ export class DrivePage implements OnInit {
     private swarm: SwarmService,
     private ipfs: IpfsService,
     private fair: FairService,
-    private alertController: AlertController) { 
-    
-  }
+    private alertController: AlertController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     this.drive = this.data.getDriveById(this.id).name;
-    this.getFileList();
+    await this.getFileList();
   }
 
   async refresh(ev: any) {
-    await this.getFileList();
+    await this.getFileList().finally(() => {
+      ev.target.complete();
+    });
   }
 
   async getFileList() {
@@ -60,15 +60,17 @@ export class DrivePage implements OnInit {
     if(file.blob) {
       this.data.showSpinner();
       if(this.id == 0) {
-
+        await this.swarm.upload(file).then(async data => {
+          await this.storage.saveFile({ id: data.reference, name: file.name }, this.id).then(() => {}).catch(e => {});
+        }).catch(e => {
+          message = e;
+        });
       } else if(this.id == 1) {
         await this.ipfs.upload(file).then(async data => {
           await this.storage.saveFile({ id: data, name: file.name}, this.id).then(() => {}).catch(e => {});
         }).catch(e => {
           message = e;
         });
-      } else if(this.id == 2) {
-
       }
       this.data.hideSpinner();
       this.showAlert(header, message);

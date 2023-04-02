@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { File, User } from './data.service';
 import { Storage } from '@ionic/storage';
+import { use } from 'chai';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class StorageService {
   private IPFSStore = "ipfs";
   private FairStore = "fair";
 
+  private SwarmBatchId = "SwarmBatchId";
+  private SwarmUrl = "SwarmUrl";
   private IPFSToken = "IPFSToken";
 
   constructor(private storage: Storage) { 
@@ -22,9 +25,9 @@ export class StorageService {
       await this.saveSwarm(file);
     } else if(store == 1) {
       await this.saveIPFS(file);
-    } else if(store == 2) {
+    }/* else if(store == 2) {
       await this.saveFair(file);
-    }
+    }*/
   }
 
   async getFiles(store: number): Promise<File[]> {
@@ -39,21 +42,33 @@ export class StorageService {
         files = data
       }).catch(e => {
       });
-    } else if(store == 2) {
+    }/* else if(store == 2) {
       await this.getFair().then(data => {
         files = data
       }).catch(e => {
       });
-    }
+    }*/
     return files;
   }
 
   private async saveSwarm(file: File) {
-
+    await this.storage.get(this.SwarmStore).then(data => {
+      let files: File[] = data;
+      files.push(file);
+      this.storage.set(this.SwarmStore, files);
+    }).catch(e => {
+      this.storage.set(this.SwarmStore, [file]);
+    });
   }
 
   private async getSwarm(): Promise<File[]> {
-    return [];
+    let files: File[] = [];
+    await this.storage.get(this.SwarmStore).then((data) => {
+      files = data;
+    }).catch(e => {
+      
+    });
+    return files;
   }
 
   async saveIPFS(file: File) {
@@ -63,7 +78,7 @@ export class StorageService {
       this.storage.set(this.IPFSStore, files);
     }).catch(e => {
       this.storage.set(this.IPFSStore, [file]);
-    })
+    });
   }
 
   private async getIPFS(): Promise<File[]> {
@@ -76,12 +91,28 @@ export class StorageService {
     return files;
   }
 
-  private async saveFair(file: File) {
-    
+  async setSwarmBatchId(batchId: string) {
+    await this.storage.set(this.SwarmBatchId, batchId);
   }
 
-  private async getFair(): Promise<File[]> {
-    return [];
+  async setSwarmUrl(url: string) {
+    await this.storage.set(this.SwarmUrl, url);
+  }
+
+  async getSwarmBatchId(): Promise<string> {
+    return await this.storage.get(this.SwarmBatchId);
+  }
+
+  async getSwarmUrl(): Promise<string> {
+    return await this.storage.get(this.SwarmUrl);
+  }
+
+  async removeSwarmBatchId() {
+    await this.storage.remove(this.SwarmBatchId);
+  }
+
+  async removeSwarmUrl() {
+    await this.storage.remove(this.SwarmUrl);
   }
 
   async setIPFSToken(token: string) {
@@ -93,11 +124,21 @@ export class StorageService {
   }
 
   async removeIPFSToken() {
-    await this.storage.remove(this.IPFSToken)
+    await this.storage.remove(this.IPFSToken);
   }
 
-  async setUser(user: User) {
-    await this.storage.set('User', user);
+  async setUser(user: User): Promise<boolean> {
+    let result = false;
+    await this.storage.get('user').then(async data => {
+      if(!data) {
+        await this.storage.set('user', user);
+        result = true;
+      }
+    }).catch(async () =>{
+      await this.storage.set('user', user);
+      result = true;
+    });
+    return result;
   }
 
   async isAuto(): Promise<boolean> {
@@ -120,18 +161,18 @@ export class StorageService {
 
   async signIn(username: string, password: string, auto: boolean): Promise<boolean> {
     let result = false;
-    let user = await this.storage.get('user').then(async user => {
-      if((user.username == username) && (user.upassword == password)) {
+    await this.storage.get('user').then(async user => {
+      if((user.username == username) && (user.password == password)) {
         result = true;
-        if(auto) {
-          let usr = user;
-          usr.auto = auto;
-          await this.storage.set('user', usr);
-        }
+        let usr = user;
+        usr.auto = auto;
+        await this.storage.set('user', usr);
+      } else {
+        throw Error("Invalid username or password!");
       }
     }).catch(e => {
-      throw Error("Invalid Username or Password");
-    })
+      throw Error("User not found, please signup!");
+    });
     return result;
   }
 }
